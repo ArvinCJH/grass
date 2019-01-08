@@ -1,0 +1,57 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>chat-demo</title>
+<link rel="stylesheet" type="text/css" href="css/base.css?v=606" />
+<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="js/common.js?v=725"></script>
+<script type="text/javascript">
+//base
+var _baseUrl = '';
+var baseJSUrl = 'js/';
+var baseCSSUrl = 'css/';
+</script>
+</head>
+<body id="home" style="height:3000px;">
+</body>
+<script type="text/javascript">
+var account_url="http://sc.chinaz.com";
+var refreshCartUrl="http://sc.chinaz.com";//购物车
+var recentlyViewedUrl="http://sc.chinaz.com"; //最近浏览
+var saveMessageUrl="http://sc.chinaz.com";//提交留言
+var checkout_Url="http://sc.chinaz.com";//去购物车并结算
+var go_buy="http://sc.chinaz.com";//购买
+var place_url="images/place.png";//loading图片
+var validateCode_url="http://sc.chinaz.com/index.php?g=Api&m=Checkcode&type=userlogin&code_len=4&font_size=14&width=80&height=24&font_color=&background=white";//获取验证码
+var delCart_url="http://sc.chinaz.com";
+var account_order_url="http://sc.chinaz.com";
+var account_return_url="http://sc.chinaz.com";
+var account_address_url="http://sc.chinaz.com";
+var account_giftcard_url="http://sc.chinaz.com";
+var account_cashcard_url="http://sc.chinaz.com";
+var account_jf_url="http://sc.chinaz.com";
+var account_comment_url = "http://sc.chinaz.com";
+var account_consult_url = "http://sc.chinaz.com";
+var account_message_url = "http://sc.chinaz.com";
+var account_arrival_url = "http://sc.chinaz.com";
+var account_reduce_url = "http://sc.chinaz.com";
+var unreadNewMsgUrl = "http://sc.chinaz.com";
+//Dialog icon base path
+ds.Dialog.defaults.iconBasePath = 'images/';
+function showInfoTip(content, type, onhide){
+	var icons = {success:'success.png', info: 'info.png'};
+	var icon = icons[type] || 'error.png';
+	return ds.dialog({
+		title: '消息提示',
+		content: content,
+		onhide: onhide,
+		onyes: true,
+		icon: icon,
+		timeout: 3,
+		width: 200
+	});
+}
+ds.loadScript(baseJSUrl+'quick_links.js');
+</script>
+</html>

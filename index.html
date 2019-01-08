@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>种草网</title>
+		<link rel="stylesheet" type="text/css" href="page/css/seed.css"/>
+		<link rel="stylesheet" type="text/css" href="page/css/searchbar.css"/>
+		<!--<link rel="stylesheet" type="text/css" href="page/css/jSlider.min.css"/>-->
+		<script src="page/js/jquery-2.1.0.js" ></script>
+		<script src="page/js/jquery.jSlider.min.js" ></script>
+		<link rel="stylesheet" type="text/css" href="page/font-awesome-4.7.0/css/font-awesome.min.css"/>
+		<link rel="shortcut icon" type="image/x-icon" href="images/种草猫.png"/>
+		<script type="text/javascript" src='page/js/jquery.cookie.js'></script>
+		<script type="text/javascript" src='page/js/jquery.index.js'></script>
+		<style type="text/css">
+		</style>
+		<script type="text/javascript">
+            $(function () {
+            });
+		</script>
+	</head>
+	
+	<body>
+		<div class="box">
+			<!--top内容-->
+			<div id="top">
+				<div class="top_logo"></div>
+				<!--<div class="search_bar">-->
+					<!--<form>-->
+						<!--<input type="text" placeholder="搜索从这里开始...">-->
+						<!--<button type="submit"></button>-->
+					<!--</form>-->
+				<!--</div>-->
+				<div class="top_input search_bar">
+					<input class="top_input_search" type="text" name="search" id="search" placeholder="请输入搜索关键字" />
+					<!--<input type="button" value="搜索" class="top_button">-->
+					<button type="submit"></button>
+				</div>
+				<div class="top_message">
+					<a href="javascript:void(0)" id="index_msg"> <img src="page/img/message.jpg" alt="消息"/></a>
+					<a href="javascript:void(0)" id="index_collect"><img src="page/img/enshrine.jpg" alt="收藏"/></a>
+					<a href="javascript:void(0)" id="index_shopcar"><img src="page/img/shop.jpg" alt="购物车"/></a>
+					<a href="javascript:void(0)" id="index_login"><img src="page/img/login.jpg" alt="登录"/></a>
+					<ul>
+						<li id="message">消息</li>
+						<li id="collect">收藏</li>
+						<li id="shop_car">购物车</li>
+						<li id="login_name">登录
+							<div id="showLoginHide" style="display: none ;position: absolute">	//	弹出框样式部分，自行设定样式 ---这里要弄
+								<ul>
+									<li><a href=\"javascript:void(0)\" id=\"user_center\">个人中心</a></li>
+									<li><a href=\"javascript:void(0)\" id=\"user_exit\">退出登录</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--head内容-->		
+			<div class="head">
+				<div class="jSlider" id="slider1" style="z-index: -1">
+					<!--	跑马灯图片设定，大小无限制 -->
+					<div><img src="images/advertisement/photo1.jpg"></div>
+					<div><img src="images/advertisement/photo2.jpg"></div>
+					<div><img src="images/advertisement/photo3.jpg"></div>
+					<div><img src="images/advertisement/photo4.jpg"></div>
+					<!--<div><img src="images/advertisement/photo5.jpg"></div>-->
+					<!--<div><img src="images/advertisement/photo6.jpg"></div>-->
+				</div>
+			</div>
+			
+			<!--center内容-->
+			<div class="centers" >
+				<!--优品种草-->
+				<div class="center_seed">
+					<div class="center_seed_one">
+						<img src="page/img/index/种草.png"/>
+					</div>
+					<div class="center_seed_two">
+						<p>优品种草</p>
+					</div>
+					<div class="cener_seed_three">
+						<a href="#"><img src="page/img/index/3.png"/></a>
+					</div>
+				</div>
+				<!--现货特卖-->
+				<div class="center_sale">
+					<div class="center_sale_one">
+						<img src="page/img/index/精品.png"/>
+					</div>
+					<div class="center_sale_two">
+						<p>社区精品</p>
+					</div>
+					<div class="cener_sale_three">
+						<a href="#"><img src="page/img/index/1.png"/></a>
+					</div>
+				</div>
+				<!--社区精品-->
+				<div class="center_boutique">
+					<div class="center_boutique_one">
+						<img src="page/img/index/特卖.png"/>
+					</div>
+					<div class="center_boutique_two">
+						<p>现货特卖</p>
+					</div>
+					<div class="cener_boutique_three">
+						<a href="#"><img src="page/img/index/2.png"/></a>
+					</div>
+				</div>
+			</div>
+			<!--bottom内容-->
+			<div class="bottom">
+				<div class="bottom_like">
+					<a class="bottom_like_img"><img src="page/img/index/猜你喜欢.png"/></a>
+					<label>猜你喜欢</label>
+				</div>
+				<div class="bottom_commodity">
+					<div class="bottom_commodity_one">
+						
+					</div>
+					<div class="bottom_commodity_two">
+						
+					</div>
+					<div class="bottom_commodity_three">
+						
+					</div>
+				</div>
+				
+			</div>
+			<!--tail内容 -->
+			<div class="tail">
+				<div class="tail_img">
+					<img src="page/img/index/tails.png"/>
+				</div>
+				<div class="tail_cailing">
+					<span class="hr"></span>
+					<span class="hr_1">©吴彩玲毕业设计</span>
+					<span class="hr"></span>
+				</div>
+			
+			</div>
+		</div>
+		
+	</body>
+</html>

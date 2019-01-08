@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>种草登录</title>
+		<link rel="shortcut icon" type="image/x-icon" href="img/种草猫.png"/>
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="js/jquery.login.js"></script>
+		<script type="text/javascript" src='js/jquery.cookie.js'></script>
+		<script type="text/javascript">
+			$(function () {
+//				$(".login_name_input").focus(function(){
+//					$("#name_id").text("shuru") ;
+//				}) ;
+
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div class="logo">
+			<img src="img/logo/seeds.jpg"/>
+		</div>
+		<div class="background">
+			<div class="login">
+				<p>种草登录</p> <hr />
+				<div class="login_box">
+				<form method="post" >
+				<!--<form method="post" action="php/login.php">-->
+					<!--以下是用户框-->
+				<div class="login_name">
+					<div class="login_name_i">
+						<i class="fa fa-user-circle-o"></i>
+					</div>
+					<div class="login_name_input">
+						<input type="text" name="username" placeholder="请输入用户名" id="login_name"/><label id="name_id"></label>
+					</div>
+				</div>
+				<!--以下是密码框-->
+				<div class="login_password">
+					<div class="login_password_i">
+						<i class="fa fa-unlock-alt"></i>
+					</div>
+					<div class="login_password_input">
+						<input type="password" name="password" placeholder="请输入密码" id="login_pass"/><label id="psssword_id"></label>
+					</div>
+				</div>
+				<!--以下是按钮-->
+				<div clas="button">
+						<!--<button type="submit" class="buttom_login" id="login_button">登录</button>-->
+						<input type="button" class="buttom_login" id="login_button" value="登录" />
+						<a href="register.html"><button type="button" class="buttom_logins">注册</button></a>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

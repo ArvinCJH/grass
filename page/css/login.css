@@ -1,0 +1,24 @@
+*{margin: 0px;padding: 0px;buttom:0px;padding: 0px;}
+button{margin: 0px;padding: 0px;}
+
+
+.logo {width: 1380px;height: 110px;margin: 0px auto; }
+.background{width:100%;height: 689px; background-image: url(../img/login/login_1.jpg);background-size: cover;}
+.login{width: 400px;height: 500px;background: #FFFFFF;float: right;margin: 90px 280px 95px;}
+.login p{text-align: center;line-height: 60px;font-size:40px ;font-family: 华文行楷;color: #d4237a;}
+
+.login_box{width: 400px;height: 200px;text-align: center;}
+
+.login_name_i i{font-size: 30px;width: 30px;height: 30px;float: left;margin-top: 35px;margin-left: 10px;}
+.login_name_input input{border: 1px solid #A9A9A9;width: 300px;height: 39px;margin-top: 30px;}
+.login_password_i i{font-size: 30px;width: 30px;height: 30px;float: left;margin-top: 35px;margin-left: 10px;}
+.login_password_input input{border: 1px solid #A9A9A9;width: 300px;height: 39px;margin-top: 30px;}
+.buttom_login{font-size: 15px;width: 150px;height: 39px;margin-top: 30px;background: #D4237A;}
+.buttom_logins{font-size: 15px;width: 150px;height: 39px;margin-top: 70px;background: #D4237A;}
+
+.login_envelope_i i{font-size: 30px;width: 30px;height: 30px;float: left;margin-top: 35px;margin-left: 10px;}
+.login_envelope_input input{border: 1px solid #A9A9A9;width: 300px;height: 39px;margin-top: 30px;}
+/*这是重置按钮*/
+.buttom_reset{font-size: 15px;width: 150px;height: 39px;margin-top: 70px;background: #D4237A;}
+
+

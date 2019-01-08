@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>种草注册</title>
+		<link rel="shortcut icon" type="image/x-icon" href="img/种草猫.png"/>
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+		<script src="js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript" src='js/jquery.cookie.js'></script>
+		<script src="js/jquery.register.js"></script>
+		<script type="text/javascript">
+			$(function () {
+
+            })
+		</script>
+	</head>
+	<body>
+		<!--这是logo-->
+		<div class="logo">
+			<img src="img/logo/seeds.jpg"/>
+		</div>
+		<div class="background"><!--这是背景图片-->
+			<div class="login">
+				<p>种草注册</p> <hr />
+				<div class="login_box">
+				<form method="post">
+					<!--以下是用户框-->
+				<div class="login_name">
+					<div class="login_name_i">
+						<i class="fa fa-user-circle-o"></i>
+					</div>
+					<div class="login_name_input">
+						<input class="login_name_input" type="text" name="username" id="register_username" placeholder="请输入用户名"/>
+					</div>
+				</div>
+				<!--以下是密码框-->
+				<div class="login_password">
+					<div class="login_password_i">
+						<i class="fa fa-unlock"></i>
+					</div>
+					<div class="login_password_input">
+						<input id="register_password_input" class="login_password_input" type="password" name="password" placeholder="请输入密码"/>
+					</div>
+				</div>
+				<!--以下是确认密码密码框-->
+				<div class="login_password">
+					<div class="login_password_i">
+						<i class="fa fa-unlock-alt"></i>
+					</div>
+					<div class="login_password_input">
+						<input id="affirm_password_input" class="login_password_input" type="password" name="passwords" placeholder="请输入确认密码"/>
+						<label id="affirm_password_label"></label>
+					</div>
+				</div>
+				<!--以下是邮箱-->
+				<div class="login_envelope">
+					<div class="login_envelope_i">
+						<i class="fa fa-envelope"></i>
+					</div>
+					<div class="login_envelope_input">
+						<input id="register_envelope_input" class="login_envelope_input" type="email" name="envelope" placeholder="请输入电子邮箱"/>
+						<label id="register_envelope_label"></label>
+					</div>
+				</div>
+				<!--以下是按钮-->
+				<div clas="button">
+						<!--<button type="submit" class="buttom_login" id="register_btn">注册</button>-->
+						<input type="button" class="buttom_login" id="register_btn" value="注册" />
+						<button type="reset" class="buttom_reset" id="register_reset_btn">重置</button>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

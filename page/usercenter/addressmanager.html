@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/user.css">
+    <script src="../js/jquery-2.1.0.js" ></script>
+    <script src="../js/jquery.cookie.js" ></script>
+    <style type="text/css">
+
+
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            var userid = $.cookie('userid');
+            if (userid ==null){
+                window.location.href="../../index.html" ;
+            }
+
+            $("#address_new").click(function () {
+                var userRegion = $("#address_name").val();
+                var postalCode = $("#postal_code").val();
+                var stressId = $("#address_streetid").val();
+                var consignee = $("#address_username").val();
+                var receive_phone = $("#address_phone").val();
+                // $("input[type='checkbox']").is(':checked');选中为true,未选中为false；
+                var address_default =$("#address_default").is(":checked") ;
+                if (userRegion !=null &&postalCode !=null &&stressId !=null &&consignee !=null &&receive_phone !=null){
+                    var defaultStatu =2 ;
+                    if (address_default) defaultStatu =1 ;
+                    var url="../php/addressManagerAdd.php" ;
+                    var myData ="userRegion="+userRegion+"&postalCode="+postalCode+
+                        "&stressId="+stressId+"&consignee="+consignee+
+                        "&receive_phone="+receive_phone+"&address_default="+defaultStatu+"&userid="+userid;
+                    $.ajax({
+                        url:url ,
+                        type:"POST" ,
+                        dataType:"text" ,
+                        data:myData ,
+                        success:function (data) {
+                            // alert(data) ;
+                            // console.log(data) ;
+                            if (data.code ==0){
+                                alert("增加成功") ;
+                            }else if (data.code ==1){
+                                alert("增加失败") ;
+                            }else if (data.code ==2){
+                                alert("请检查数据是否为空") ;
+                            }
+                        } ,error:function () {
+                            alert("error"+request.status) ;
+                        }
+                    }) ;
+                } else {
+                    alert("请检查是否为空") ;
+                }
+            });
+
+            $("#address_test").click(function () {
+                var request =new XMLHttpRequest() ;
+                var url="../php/addressManagerQuery.php" ;
+                var myData ="userid="+userid;
+                $.ajax({
+                    url:url ,
+                    type:"POST" ,
+                    dataType:"text" ,
+                    data:myData ,
+                    success:function (data) {
+                        alert(data) ;
+                        // console.log(data) ;
+                        if (data.code ==0){
+                            alert("查询成功") ;
+                        }else if (data.code ==1){
+                            alert("查询失败") ;
+                        }else if (data.code ==2){
+                            alert("请检查数据是否为空") ;
+                        }
+                    } ,error:function () {
+                        alert("error"+request.status) ;
+                    }
+                }) ;
+            }) ;
+        })
+    </script>
+</head>
+<body>
+    <div class="address">
+        <div class="address_box">
+            <div class="address_box_one">
+                <p>地址管理</p>
+            </div>
+            <div class="address_from">
+                <from method="post" class="user_box_two_from">
+                    <label>地区：<input type="text" name="address" id="address_name"></label><br>
+                    <label>邮政编码：<input type="text" name="code" id="postal_code"></label><br>
+                    <label>街道地址：<input type="text" name="street_address" id="address_streetid"></label><br>
+                    <label>收货人：<input type="text" name="address_name" id="address_username"></label><br>
+                    <label>手机：<input type="text" name="phone" id="address_phone"></label><br>
+                    <label>设置为默认地址<input type="checkbox" name="mycheck" id="address_default"></label><br>
+                    <label><button id="address_new" class="adress_new_one">新增</button></label><br>
+                    <label><button id="address_test" class="adress_new_one">测试</button></label><br>
+                    <label><button id="adrress_cancel" disabled="disabled">取消</button></label>
+                </from>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

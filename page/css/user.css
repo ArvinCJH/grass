@@ -1,0 +1,30 @@
+*{margin: 0px;padding: 0px;}
+a{text-decoration: none;}
+ul,li{ padding:0;margin:0;list-style:none}
+
+.user{width: 1180px;margin: auto;}
+.user_box{width: 1002px;height: 600px;margin: auto;border: #9b9b9b solid 1px;}
+.user_box_one{width: 130px;height: 600px;background: rgba(220, 220, 220, 0.2);float: left;}
+.user_box_one_top{width: 130px;height: 150px;float: left;}
+.user_box_one_bottom{width: 130px;height: 450px;border-top:1px solid #e1e1e1;float: left;}
+.user_box_one_bottom_1{width: 130px;height: 50px;}
+.user_box_one_bottom_2{width: 130px;height: 50px;}
+.user_box_one_bottom_3{width: 130px;height: 50px;}
+.user_box_one_bottom p{text-align: center;line-height: 50px;}
+
+.user_box_two{width: 870px;height: 600px;float: right}
+.user_box_two_message{width: 810px;height: 540px;margin: 30px 30px;}
+.user_box_two_message p{color: #D4237A;background-color: rgba(220, 220, 220, 0.2);margin: 5px 5px;}
+.user_box_two_from input{height: 25px;margin: 10px 10px;}
+.user_box_two_from{margin: 10px 10px;}
+
+.user_button_one{width: 80px;height: 30px;font-size: 15px;color:#D4237A }
+.user_button_two{width: 80px;height: 30px;font-size: 15px;color:#D4237A;margin-left: 10px}
+
+.user_tails{width: 1005px;height: 120px;background: rgba(200, 54, 54, 0.2);margin: auto;}
+.user_img{text-align: center;}
+.hr{display:inline-block;width:435px;border-top:1px solid #D4237A;vertical-align:5px; }
+
+
+.address_box{width: 810px;height: 540px;margin: 30px 30px;}
+.address_box_one p{color: #D4237A;background-color: rgba(220, 220, 220, 0.2);margin: 5px 5px;}
