@@ -177,22 +177,32 @@ class SqlUtils{
     function userAddressQuery($userid){        //  用户地址查询
         /* queryUserAddress
          * 查询规则，用户ID即可查询到当前ID的所有信息
+         *
+         * mysqli_fetch_array($result ,$resulttype)
+         *  //  默认为混合数组     ;
+         *      MYSQLI_ASSOC   关联数组(下标是字符串)，相当于mysqli_fetch_assoc()
+         *      MYSQLI_NUM     枚举数组(下标是整数) ，相当于mysqli_fetch_row()
+         *
          * */
         $sql ="select * from user_address_manager where user_id='{$userid}'" ;
-        $result = array();
+        $result["data"] = array();
         if ($res =$this->sqlLink()->query($sql)){
             $code =0 ;
-            while ($row =mysqli_fetch_array($res)) $result[] =$row ;
+            while ($row =mysqli_fetch_assoc($res)){
+//            while ($row =mysqli_fetch_array($res ,MYSQLI_ASSOC)){
+//                $result[] =$row ;
+                array_push($result["data"] ,$row) ;
 
+            }
             mysqli_free_result($res) ;
         }else{
             $code =1 ;
 //            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
         }
 //        echo $result ;
-        print_r($result) ;
-//        $this->utilTool()->combinationOfData("addUserAddress" ,$code ,$result) ;
-//        $this->closeDB() ;
+//        print_r($result) ;
+        $this->utilTool()->combinationOfData("userAddressQuery" ,$code ,$result) ;
+        $this->closeDB() ;
 
     }
 
