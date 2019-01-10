@@ -20,10 +20,16 @@
             }
             // $("#addressManagerFrom").hide() ;
             $("#add_newaddress_btn").click(function () {
-                $("#addressManagerFrom").show() ;
+                // $("#addressManagerFrom").fadeIn(2000) ;      // 淡入淡出效果
+                // $("#addressManagerFrom").slideDown(1000) ;      // 滑动效果
+                $("#addressManagerFrom").slideToggle(1000) ;      // 滑动效果
+                // $("#addressManagerFrom").show() ;
+
             }) ;
             $("#adrress_cancel").click(function () {
-                $("#addressManagerFrom").hide() ;
+                // $("#addressManagerFrom").fadeOut(2000) ;
+                $("#addressManagerFrom").slideUp(500) ;
+                // $("#addressManagerFrom").hide() ;
             }) ;
 
             $("#address_new").click(function () {
@@ -76,10 +82,10 @@
                     data: myData,
                     success: function (data) {
                         // alert(data) ;
-                        console.log(data.data);
+                        console.log(data);
                         if (data.code == 0) {
                             jsonMsg(data.data);
-                            alert("查询成功");
+                            // alert("查询成功");
                         } else if (data.code == 1) {
                             alert("查询失败");
                         } else if (data.code == 2) {

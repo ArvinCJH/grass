@@ -1,7 +1,7 @@
 <?php
 require 'util/SqlUtils.php' ;
-//$userid =$_POST['userid'] ;
-$userid ="97";
+$userid =$_POST['userid'] ;
+//$userid ="97";
 
 
 $sqlTool =new SqlUtils() ;
