@@ -3,7 +3,7 @@ $(function () {
     var islogin =false ;
     var userid = $.cookie('userid');
     var username = $.cookie('username');
-    var afterLogin ="<div id=\"showLoginHide\" style=\"display: none ;position: absolute \">\n" +
+    var afterLogin ="<div id=\"showLoginHide\">\n" +
         "<ul>\n" +
         "<li><a href=\"javascript:void(0)\" id=\"user_center\">个人中心</a></li>\n" +
         "<li><a href=\"javascript:void(0)\" id=\"user_exit\">退出登录</a></li>\n" +

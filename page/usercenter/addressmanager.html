@@ -40,7 +40,8 @@
                 var receive_phone = $("#address_phone").val();
                 // $("input[type='checkbox']").is(':checked');选中为true,未选中为false；
                 var address_default =$("#address_default").is(":checked") ;
-                if (userRegion !=null &&postalCode !=null &&stressId !=null &&consignee !=null &&receive_phone !=null){
+                // if (userRegion.length !=null &&postalCode !=null &&stressId !=null &&consignee !=null &&receive_phone !=null){
+                if (userRegion.length !=0 &&postalCode.length !=0 &&stressId.length !=0 &&consignee.length !=0 &&receive_phone.length !=0){
                     var defaultStatu =2 ;
                     if (address_default) defaultStatu =1 ;
                     var url="../php/addressManagerAdd.php" ;
@@ -50,13 +51,14 @@
                     $.ajax({
                         url:url ,
                         type:"POST" ,
-                        dataType:"text" ,
+                        dataType:"json" ,
                         data:myData ,
                         success:function (data) {
                             // alert(data) ;
                             // console.log(data) ;
                             if (data.code ==0){
-                                alert("增加成功") ;
+                                window.location.reload(true) ;      //  刷新当前页面
+                                // alert("增加成功") ;
                             }else if (data.code ==1){
                                 alert("增加失败") ;
                             }else if (data.code ==2){
@@ -85,6 +87,11 @@
                         console.log(data);
                         if (data.code == 0) {
                             jsonMsg(data.data);
+                            if((data.data).length ==0){
+                                // alert("空") ;
+                                var trs ="<lable>未添加地址</lable>" ;
+                                $("#hasAddress_tbody").prepend(trs) ;
+                            }
                             // alert("查询成功");
                         } else if (data.code == 1) {
                             alert("查询失败");
