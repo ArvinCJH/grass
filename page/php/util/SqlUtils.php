@@ -158,9 +158,10 @@ class SqlUtils{
          * code 0 插入成功
          * code 1 插入失败
          * */
+        $address_detail =$userRegion+$stressId ;
 //        $sql = "UPDATE `user_table` SET `user_year` = "+$infoname+", `user_sex` = "+$infosex+", `mobile` = "+$infomobile+", `birthday` = "+$infobirth+", `occupation` = "+$infooccr+" WHERE `user_table`.`userid` = "+$userid;
-        $sql = "INSERT INTO user_address_manager(user_region, postal_code, address_stress ,consignee ,receive_phone ,address_default ,user_id)
-            VALUES ('$userRegion' ,'$postalCode' ,'$stressId' ,'$consignee' ,'$receive_phone' ,'$address_default' ,'$userid')";     //  插入语句
+        $sql = "INSERT INTO user_address_manager(user_region, postal_code, address_stress ,consignee ,receive_phone ,address_default ,address_detail ,user_id)
+            VALUES ('$userRegion' ,'$postalCode' ,'$stressId' ,'$consignee' ,'$receive_phone' ,'$address_default' ,'$address_detail' ,'$userid')";     //  插入语句
         $arr =null ;
         if ($this->sqlLink()->query($sql) ===TRUE){
             $code =0 ;
