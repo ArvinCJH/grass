@@ -3,6 +3,7 @@ $(function () {
     var islogin =false ;
     var userid = $.cookie('userid');
     var username = $.cookie('username');
+    getHotMsg() ;
     var afterLogin ="<div id=\"showLoginHide\">\n" +
         "<ul>\n" +
         "<li><a href=\"javascript:void(0)\" id=\"user_center\">个人中心</a></li>\n" +
@@ -119,6 +120,37 @@ $(function () {
     // });
 });
 
+function getHotMsg() {      //  获取热卖列表
+    var data ="" ;
+    var request ="selling" ;
+    getData(request ,data) ;
+}
+
+
+function setHostMsg(data) {
+    $.each(obj ,function (n ,value) {
+        value.id ;
+        value.name ;
+        value.price ;
+        value.pic_url ;
+        value.evaluate_num ;
+        value.collection_num ;
+        value.monthly_sale ;
+    })
+}
+
+function getData(request ,myData) {
+    getMyResponData(request ,myData ,function (data) {
+        console.log(data) ;
+        if (data.code ==0){
+            setHostMsg(data.data)
+        }else if (data.code ==1){
+            alert("插入失败") ;
+        }else if (data.code ==2){
+            alert("请检查数据是否为空") ;
+        }
+    })
+}
 
 /*  简单记录
 * 数据在页面之前的传递方式

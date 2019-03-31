@@ -1,4 +1,5 @@
 <?php
+header('Content-type:text/html;charset=utf-8');
 include 'Utils.php' ;
 class SqlUtils{
 
@@ -12,7 +13,10 @@ class SqlUtils{
         $db= new mysqli($mysqlHost,$mysqlName,$mysqlPass,$mysqlDBName);
         if (!$db){
             die("could not connect:".mysqli_error()) ;
-        }else return $db ;
+        }else {
+            $db->query("set names utf8") ;
+            return $db ;
+        }
     }
 
     function closeDB(){

@@ -1,6 +1,5 @@
 <?php
-
-header("Content-type:text/html;charset=utf-8") ;
+header('Content-type:text/html;charset=utf-8');
 require 'util/SqlUtils.php' ;
 $sqliteUtil =new SqlUtils() ;
 $sqliteUtil->productInformationDisplay();
