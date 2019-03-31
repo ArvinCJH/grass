@@ -1,4 +1,5 @@
 <?php
+header("Content-type:text/html;charset=utf-8") ;
 require 'util/SqlUtils.php' ;
 $uid = $_POST["username"];
 $pwd = $_POST["password"];

@@ -10359,8 +10359,8 @@
     return jQuery;
 } );
 
-function getMyResponData(myData,callback){
-    var url="php/grassShop.php" ;
+function getMyResponData(requestUrl ,myData,callback){
+    var url="php/"+requestUrl+".php" ;
     var request =new XMLHttpRequest() ;
     $.ajax({
         url:url ,

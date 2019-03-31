@@ -9,7 +9,7 @@ class SqlUtils{
         $mysqlDBName ="shop" ;
 
         //造连接对象
-        $db= new MySQLi($mysqlHost,$mysqlName,$mysqlPass,$mysqlDBName);
+        $db= new mysqli($mysqlHost,$mysqlName,$mysqlPass,$mysqlDBName);
         if (!$db){
             die("could not connect:".mysqli_error()) ;
         }else return $db ;
@@ -35,7 +35,7 @@ class SqlUtils{
          * code 2   用户名或密码为空
          * */
         $arr =null ;
-        $sql = "select userpass ,userid from user_table where username='{$uid}'";   //  sql 语句 ，核对密码
+        $sql = "select userpass ,id from user_table where username='{$uid}'";   //  sql 语句 ，核对密码
         if($this->utilTool()->hasTwoWord($uid ,$pwd))       //  判断是否为空
         {
             $reslut = $this->sqlLink()->query($sql);        //  执行语句
@@ -103,7 +103,7 @@ class SqlUtils{
          * code 2 userId 为空
          * */
         $arr =null ;
-        $sqllite ="SELECT user_sex ,user_year ,mobile ,birthday ,occupation FROM user_table where userid='{$userId}'" ;
+        $sqllite ="SELECT user_sex ,user_year ,mobile ,birthday ,occupation FROM user_table where id='{$userId}'" ;
         if ($this->utilTool()->hasWord($userId)){
             $reslut = $this->sqlLink()->query($sqllite);
             $n = $reslut->fetch_row();
@@ -160,7 +160,7 @@ class SqlUtils{
          * */
         $address_detail =$userRegion+$stressId ;
 //        $sql = "UPDATE `user_table` SET `user_year` = "+$infoname+", `user_sex` = "+$infosex+", `mobile` = "+$infomobile+", `birthday` = "+$infobirth+", `occupation` = "+$infooccr+" WHERE `user_table`.`userid` = "+$userid;
-        $sql = "INSERT INTO user_address_manager(user_region, postal_code, address_stress ,consignee ,receive_phone ,address_default ,address_detail ,user_id)
+        $sql = "INSERT INTO address_manager_table(region, postal_code, address_stress ,consignee ,receive_phone ,address_default ,address_detail ,user_id)
             VALUES ('$userRegion' ,'$postalCode' ,'$stressId' ,'$consignee' ,'$receive_phone' ,'$address_default' ,'$address_detail' ,'$userid')";     //  插入语句
         $arr =null ;
         if ($this->sqlLink()->query($sql) ===TRUE){
@@ -185,7 +185,7 @@ class SqlUtils{
          *      MYSQLI_NUM     枚举数组(下标是整数) ，相当于mysqli_fetch_row()
          *
          * */
-        $sql ="select * from user_address_manager where user_id='{$userid}'" ;
+        $sql ="select * from address_manager_table where user_id='{$userid}'" ;
         $result["data"] = array();
         if ($res =$this->sqlLink()->query($sql)){
             $code =0 ;
@@ -227,11 +227,32 @@ class SqlUtils{
     }
 
     function productInformationDisplay(){           //  商品信息展示，前10条
+        // host sale
+//        评价数 、商品名称 、商品图片 、收藏数 、月销量 、价格
+//        evaluate_num ,name ,pic_url  ,collection_num ,monthly_sale ,price
+        $sql="select id ,name ,price ,pic_url ,evaluate_num ,collection_num ,monthly_sale from product_table ;" ;
+        $result["data"] = array();
+        if ($res =$this->sqlLink()->query($sql)){
+            $code =0 ;
+            while ($row =mysqli_fetch_assoc($res)){
+//            while ($row =mysqli_fetch_array($res ,MYSQLI_ASSOC)){
+//                $result[] =$row ;
+                array_push($result["data"] ,$row) ;
 
+            }
+            mysqli_free_result($res) ;
+        }else{
+            $code =1 ;
+//            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
+        }
+//        echo $result ;
+//        print_r($result) ;
+        $this->utilTool()->combinationOfData("productInformationDisplay" ,$code ,$result) ;
+        $this->closeDB() ;
     }
-
-
 }
+
+
 
 /**
  * Created by IntelliJ IDEA.
