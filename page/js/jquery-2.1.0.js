@@ -10359,11 +10359,6 @@
     return jQuery;
 } );
 
-function UrlPost() {
-    var url ="https://www.sysmeeting.com/SportManagementServer/Service" ;
-    return url;
-}
-
 var textWidth = function(text){
     var myText = $('<pre>'+ text +'</pre>').css({display: 'none'});
     $('body').append(myText);
@@ -10400,7 +10395,7 @@ function getMyResponData(requestUrl ,myData,callback){
         success:function (data) {
             callback(data) ;
         } ,error:function (error) {
-            showTip("error"+request.status+"\n"+error) ;
+            showTip(0x123 ,"error"+request.status+"\n"+error) ;
             // alert("error"+request.status) ;
         }
     });
@@ -10463,7 +10458,7 @@ UrlParam = function() { // url参数
 }();
 
 
-function showTip(tipmsg) {
+function showTip(tipmsg ,tipCode) {
     var tipStr ="" ;
     var hasReflash =true ;
     if (tipmsg =="0"){
@@ -10497,7 +10492,7 @@ function showTip(tipmsg) {
     } else if (tipmsg =="7"){
         tipStr ="请检查数据是否为空" ;
     } else {
-        tipStr ="请检查输入值" ;
+        tipStr =tipCode ;
     }
     var tip ="<div id='tipbox' class='showTip' style='display:none;'>"+tipStr+"</div>" ;
     $("body").append(tip) ;
