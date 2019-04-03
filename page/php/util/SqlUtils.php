@@ -15,6 +15,7 @@ class SqlUtils{
             die("could not connect:".mysqli_error()) ;
         }else {
             $db->query("set names utf8") ;
+//            echo'succ sql' ;
             return $db ;
         }
     }
