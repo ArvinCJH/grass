@@ -2,22 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/user.css">
+    <title>安全设置</title>
 </head>
 <body>
 
-    <div class="setpass">
-        <div class="setpass_1">
+<div class="user_box_two">
+    <div class="user_box_two_message">
+        <div class="user_box_two_message_1">
             <p>安全设置</p>
-        </div>
-        <div class="setpass_2">
-            <from method="post" >
-                <label>当前密码<input type="password" name="password"  /></label><br>
-                <label>新密码<input type="password" name="password"  /></label><br>
-                <label>确认密码<input type="password" name="password"/></label>
-                <input type="button" class="set_button" value="确认" />
-            </from>
+            <form class="user_box_two_from" method="post" >
+                <label>当前密码：<input type="text" name="username" ></label><br>
+                <label>新密码：<input type="text" name="moblie" ></label><br>
+                <label>确认密码：<input type="text" name="occupation" ></label><br>
+                <label id="showtip"></label>
+                <label><button onclick="javascript:void(0)" class="user_button_one">修改完成</button></label>
+            </form>
+            <label><a href="../../index.html" target="_parent"><button class="user_button_two">返回首页</button></a></label>
         </div>
     </div>
+</div>
+
+
+
+
+
+    <!--<div class="setpass">-->
+        <!--<div class="setpass_1">-->
+            <!--<p>安全设置</p>-->
+        <!--</div>-->
+        <!--<div class="setpass_2">-->
+            <!--<from method="post" >-->
+                <!--<label>当前密码<input type="password" name="password"  /></label><br>-->
+                <!--<label>新密码<input type="password" name="password"  /></label><br>-->
+                <!--<label>确认密码<input type="password" name="password"/></label>-->
+                <!--<input type="button" class="set_button" value="确认" />-->
+            <!--</from>-->
+        <!--</div>-->
+    <!--</div>-->
 </body>
 </html>
