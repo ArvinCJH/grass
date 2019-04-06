@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : grass
-Source Server Version : 50605
+Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : shop
 
 Target Server Type    : MYSQL
-Target Server Version : 50605
+Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-03-31 09:40:23
+Date: 2019-04-02 23:47:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,11 +32,16 @@ CREATE TABLE `address_manager_table` (
   `region` varchar(25) DEFAULT NULL COMMENT '地区',
   `address_stress` varchar(25) DEFAULT NULL COMMENT '街道',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of address_manager_table
 -- ----------------------------
+INSERT INTO `address_manager_table` VALUES ('1', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
+INSERT INTO `address_manager_table` VALUES ('2', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
+INSERT INTO `address_manager_table` VALUES ('3', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
+INSERT INTO `address_manager_table` VALUES ('4', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
+INSERT INTO `address_manager_table` VALUES ('5', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
 
 -- ----------------------------
 -- Table structure for merchants_table
@@ -82,19 +87,30 @@ CREATE TABLE `product_table` (
   `name` varchar(25) DEFAULT NULL,
   `price` float DEFAULT NULL,
   `pic_urls` text COMMENT '产品图片集',
-  `pic_url` varchar(25) DEFAULT NULL COMMENT '产品图片(展示)',
+  `pic_url` varchar(255) DEFAULT NULL COMMENT '产品图片(展示)',
   `merchants_address` varchar(25) DEFAULT NULL COMMENT '商家地址',
   `merchants_sales` varchar(25) DEFAULT NULL COMMENT '是否在热卖',
   `merchants_serve` varchar(25) DEFAULT NULL COMMENT '本产品的商家服务',
   `product_classify_id` text COMMENT '可选服务(list)',
   `quantity_available` bigint(20) DEFAULT NULL COMMENT '可购买数量（产品总数）',
   `quantity_purchased` bigint(20) DEFAULT NULL COMMENT '已购买数量(销售数)',
+  `evaluate_num` int(11) DEFAULT NULL COMMENT '评论数',
+  `evaluate_id` int(11) DEFAULT NULL COMMENT '评论id',
+  `collection_num` int(11) DEFAULT NULL COMMENT '收藏数',
+  `collection_id` int(11) DEFAULT NULL COMMENT '收藏id',
+  `monthly_sale` int(11) DEFAULT NULL COMMENT '月销量',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product_table
 -- ----------------------------
+INSERT INTO `product_table` VALUES ('1', '一次性纸杯 奶茶咖啡打包杯外带杯100只特厚', '23', null, 'product_pic/ycxnczb100.webp', null, null, null, null, null, null, '10', null, '4544', null, '1000');
+INSERT INTO `product_table` VALUES ('2', '加厚加大可机洗牛津布野餐垫防潮垫送妈咪包', '118', null, 'product_pic/jhjdkjxnjbycd.webp', null, null, null, null, null, null, '10', null, '1550', null, '400');
+INSERT INTO `product_table` VALUES ('3', '2019春夏新款中长款防紫外线防晒衣女', '179', null, 'product_pic/cxxkzckfzwxfsy.webp', null, null, null, null, null, null, '8', null, '406', null, '840');
+INSERT INTO `product_table` VALUES ('4', '大号紫砂茶叶罐普洱茶缸私藏密封茶缸茶叶桶', '218', null, 'product_pic/dhzscygpecgscmfcg.webp', null, null, null, null, null, null, '153', null, '724', null, '1520');
+INSERT INTO `product_table` VALUES ('5', '牛皮纸敞口盒船盒鸡米花盒薯条盒炸鸡烤翅盒', '110', null, 'product_pic/npzckcchjmhhsth.webp', null, null, null, null, null, null, '28', null, '302', null, '280');
+INSERT INTO `product_table` VALUES ('6', '酿酒机设备小型家用白酒纯露全自动烧酒家庭', '688', null, 'product_pic/njjsbxxjybjclqzdz.webp', null, null, null, null, null, null, '10', null, '19542', null, '468');
 
 -- ----------------------------
 -- Table structure for serve_table

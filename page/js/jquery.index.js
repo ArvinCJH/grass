@@ -128,15 +128,20 @@ function getHotMsg() {      //  获取热卖列表
 
 
 function setHostMsg(data) {
-    $.each(obj ,function (n ,value) {
-        value.id ;
-        value.name ;
-        value.price ;
-        value.pic_url ;
-        value.evaluate_num ;
-        value.collection_num ;
-        value.monthly_sale ;
-    })
+    var body="" ;
+    $.each(data ,function (n ,value) {
+        // value.id ;
+        // value.name ;
+        // value.price ;
+        // value.pic_url ;
+        // value.evaluate_num ;
+        // value.collection_num ;
+        // value.monthly_sale ;
+        body +="<ul style='width: 200px ;float: left ;padding: 10px'><li><a><img src='"+value.pic_url+"'></a><a style='width: 200px '>"+value.name+"</a><div style='padding: 20px'><a>评价<em>"+value.evaluate_num+"</em></a><a style='padding-left: 20px'>收藏<em>"+value.collection_num+"</em></a></div><div><a style='color: red ;font-size: 20px'><span>￥</span><em>"+value.price+"</em></a><a style='color: grey ;font-size: 10px ;text-decoration:line-through '><span>￥</span><em>40</em></a><a style='float: right;color: grey'>月销<em>"+value.monthly_sale+"</em>笔</a></div></li></ul>"
+
+    }) ;
+
+    $("#botton_guessULike").html(body) ;
 }
 
 function getData(request ,myData) {

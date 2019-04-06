@@ -40,12 +40,12 @@ ul,li{ padding:0;margin:0;list-style:none}
 .cener_boutique_three{width: 220px;height: 220px; float: right;}
 
 /* bottom内容 */
-.bottom{width: 1180px;height: 480px;margin: 10px auto;}
+.bottom{width: 1180px;height: 1480px;margin: 10px auto;}
 .bottom_like{width: 1180px;height: 80px;}
 .bottom_like_img{width: 80px;height: 80px;float: left;}
 .bottom_like label{float: left;font-size: 35px;color: #D4237A;margin-top: 20px;}
 
-.bottom_commodity{width: 1180px;height: 400px;}
+.bottom_commodity{width: 1180px;height: 1400px;}
 .bottom_commodity_one{width: 385px;height: 400px;background-color: #0099FF;margin-right:12px;float: left;}
 .bottom_commodity_two{width: 385px;height: 400px;background-color: #145CEA; float: left;}
 .bottom_commodity_three{width: 385px;height: 400px;background-color: #1C2738;margin-left: 12px; float: left;}
