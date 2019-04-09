@@ -10491,7 +10491,9 @@ function showTip(tipmsg ,tipCode) {
         tipStr ="分享失败" ;
     } else if (tipmsg =="7"){
         tipStr ="请检查数据是否为空" ;
+        hasReflash =false ;
     } else {
+        hasReflash =false ;
         tipStr =tipCode ;
     }
     var tip ="<div id='tipbox' class='showTip' style='display:none;'>"+tipStr+"</div>" ;

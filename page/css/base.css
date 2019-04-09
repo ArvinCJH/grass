@@ -1,0 +1,43 @@
+/*-------------------------- showDialog ---------------------------------------*/
+/* showCheckDialog */
+
+.showChecktip{position:fixed; top:50%;left:50%; z-index:1000; border-radius:12px; width:80%;  background:#fff;overflow: hidden;-webkit-transform:translateX( -50% ) translateY( -50% );transform:translateX( -50% ) translateY( -50% );  -webkit-box-sizing:border-box;  box-sizing:border-box; color: #484848;border: 1px red solid;max-width: 600px}
+.showChecktip .showChecktip_bg{padding: .5rem;line-height: 1.5;}
+.showChecktip .showChecktip_title{height:40px; line-height:40px; text-align: center;font-size:.9rem;}
+.showChecktip .showChecktip_context{margin: 1rem .5rem 0;font-size:.75rem;height: 3.5rem;text-align: center}
+.showChecktip .showChecktip_context p{font-size:14px; padding:0; line-height: 1.5em;}
+.showChecktip .showChecktip_footer{padding:.4rem 0; text-align:center;height: 2.4rem; line-height: 2.4rem}
+.showChecktip .showChecktip_btn{ outline:none; display:inline-block !important; height:1.5rem; line-height:1.5rem; padding:0 16px; color:#fff; font-size:.9rem; text-align:center; vertical-align:middle; border:none; border-radius:4px; box-sizing:border-box;}
+.showChecktip .showChecktip_btn-lg{width:30%;color:brown; text-align:center;border-radius: 8px;}
+.showChecktip .showChecktip_btn-st{width:48%;color:black; text-align:center;}
+
+.showTip{
+    width: 220px;
+    height: 50px;
+    border-radius: 20px;
+    background: #454545;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    position: fixed;
+    top:50%;
+    left: calc(50% - 110px);
+    color: #fff;
+}
+
+/*-------------------------- all ---------------------------------------*/
+.pointer{
+    cursor: pointer ;
+}
+
+.forNoneLineA{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.hide{
+    display: none;
+}

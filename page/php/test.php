@@ -9,4 +9,4 @@
 require 'util/SqlUtils.php' ;
 
 $db =new SqlUtils() ;
-$db->userAddressQuery("1") ;
+$db->commodityInformationIdQuery(1);

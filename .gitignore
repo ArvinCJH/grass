@@ -8,4 +8,5 @@
 out
 gen
 .gitignore
-.idea/
+commodity
+merchants

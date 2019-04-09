@@ -46,8 +46,8 @@ ul,li{ padding:0;margin:0;list-style:none}
 .bottom_like label{float: left;font-size: 35px;color: #D4237A;margin-top: 20px;}
 
 .bottom_commodity{width: 100%;display:inline-block;}
-.bottom_commodity_ul{width: 18% ;float: left ;padding: 10px}
-.bottom_commodity_ul :hover{border: 1px outset red;color: gray;}
+.bottom_commodity_ul{display:inline-block;width: 17% ;float: left ;padding: 3px ;margin: 8px ;border: 2px solid transparent;}
+.bottom_commodity_ul :hover{border: 1px solid red;color: gray;}
 
 /* tail内容 */
 .tail{width: 1180px;height: 120px;background: rgba(200, 54, 54, 0.2);margin: auto;}

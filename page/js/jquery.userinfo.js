@@ -63,31 +63,54 @@ $(function () {
         var infomobile =$("#userinfo_mobile").val() ;
         var infooccr =$("#userinfo_occu").val() ;
 
-        var url="../php/userInfoSubmit.php" ;
         var myData ="infoname="+infoname+"&infosex="+infosex+
             "&infobirth="+infobirth+"&infomobile="+infomobile+
             "&infooccr="+infooccr+"&userid="+userid ;
-        $.ajax({
-            url:url ,
-            type:"POST" ,
-            dataType:"json" ,
-            data:myData ,
-            async:false ,
-            success:function (data) {
-                // alert(data) ;
-                // console.log(data) ;
-                if (data.code ==0){
-                    alert("插入成功") ;
-                }else if (data.code ==1){
-                    alert("插入失败") ;
-                }else if (data.code ==2){
-                    alert("请检查数据是否为空") ;
-                }
-            } ,error:function () {
-                alert("error"+request.status) ;
-            }
 
-        }) ;
+        getUserInfo(1 ,myData) ;
+        // $.ajax({
+        //     url:url ,
+        //     type:"POST" ,
+        //     dataType:"json" ,
+        //     data:myData ,
+        //     async:false ,
+        //     success:function (data) {
+        //         // alert(data) ;
+        //         // console.log(data) ;
+        //         if (data.code ==0){
+        //             alert("插入成功") ;
+        //         }else if (data.code ==1){
+        //             alert("插入失败") ;
+        //         }else if (data.code ==2){
+        //             alert("请检查数据是否为空") ;
+        //         }
+        //     } ,error:function () {
+        //         alert("error"+request.status) ;
+        //     }
+        //
+        // }) ;
+
     }) ;
+
+
+    function getUserInfo(num ,myData){
+        var reqUrl ="" ;
+        if (num ==1){
+            reqUrl ="userInfoSubmit" ;
+        }
+
+        getMyResponData(reqUrl ,myData ,function (data) {
+            if (data.code ==0){
+                // alert("插入成功") ;
+                showTip(num) ;
+            }else if (data.code ==1){
+                // alert("插入失败") ;
+                showTip(-num) ;
+            }else if (data.code ==2){
+                showTip(7)
+            }
+        })
+
+    }
 
 })

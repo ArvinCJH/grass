@@ -134,12 +134,13 @@ class SqlUtils{
          * */
 //        $sql = "UPDATE `user_table` SET `user_year` = "+$infoname+", `user_sex` = "+$infosex+", `mobile` = "+$infomobile+", `birthday` = "+$infobirth+", `occupation` = "+$infooccr+" WHERE `user_table`.`userid` = "+$userid;
         $sql = "UPDATE user_table SET user_sex='{$infosex}',user_year='{$infoname}',mobile='{$infomobile}' ,birthday='{$infobirth}' ,occupation='{$infooccr}'
-            WHERE userid='{$userid}'";
+            WHERE id='{$userid}'";
         $arr = null;
         if ($this->utilTool()->hasWord($infosex)) {  // 查询时以性别是否为空判断是否含有数据，所以
             if ($this->sqlLink()->query($sql) === TRUE) {
                 $code = 0;
     //            echo "succ" ;
+//                $arr=array("usersex"=>$n[0] ,"useryear"=>$n[1] ,"mobile"=>$n[2] ,"birthday"=>$n[3] ,"job"=>$n[4]);
             } else {
                 $code = 1;
     //            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
@@ -151,6 +152,45 @@ class SqlUtils{
 
     function forgetPass(){     //   忘记密码
 
+    }
+
+    function passChange($id ,$forPass ,$newPass){     //   修改密码
+        /*
+         * code 0 密码修改成功
+         * code 1 原密码错误
+         * code 2 数据为空
+         * code 3 密码修改失败
+         * code 4
+         * */
+        $sql = "select userpass from user_table where id='{$id}'";   //  sql 语句 ，核对密码
+        $arr = null;
+        if($this->utilTool()->hasTwoWord($id ,$forPass))       //  判断是否为空
+        {
+            $reslut = $this->sqlLink()->query($sql);        //   执行语句
+            $n = $reslut->fetch_row();      //取出数组
+            if($n[0]==$forPass) {
+                $changPasssql = "UPDATE user_table SET userpass='{$newPass}' WHERE id='{$id}'";
+                if ($this->sqlLink()->query($changPasssql) === TRUE) {
+                    $code = 0;
+                    //            echo "succ" ;
+                } else {
+                    $code = 3;
+//                    echo "密码修改失败！";
+                    //            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
+                }
+            }
+            else {
+                $code = 1 ;
+//                echo "原密码错误！";
+            }
+        }
+        else
+        {
+            $code =2 ;
+//            echo "数据为空";
+        }
+        $this->utilTool()->combinationOfData("passChange" ,$code ,$arr) ;
+        $this->closeDB() ;
     }
 
 
@@ -212,11 +252,43 @@ class SqlUtils{
 
     }
 
+    function userAddressDel($userid ,$addressid){        //  用户地址查询
+        /* userAddressDel
+         * code 0 success
+         * code 1 fail
+         * */
+        $sql ="Delete from address_manager_table where user_id='{$userid}' and id='{$addressid}'" ;
+        $result = null;
+        if ($res =$this->sqlLink()->query($sql)){
+            $code =0 ;
+
+        }else{
+            $code =1 ;
+//            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
+        }
+        $this->utilTool()->combinationOfData("userAddressDel" ,$code ,$result) ;
+        $this->closeDB() ;
+    }
+
     /*
      * 商品类信息部分
      * */
-    function productInformationAddition(){          //  商品信息添加
+    function productInformationAddition($inforArray){          //  商品信息添加
+        $sql ="INSERT INTO product_table (name ,price ,pic_urls ,merchants_address ,merchants_serve ,merchants_sales ,
+                 quantity_available ,quantity_purchased ,evaluate_num ,collection_num ,monthly_sale) 
+                  values ('{$inforArray['data']}' ,'{$inforArray['data']}','{$inforArray['data']}','{$inforArray['data']}','{$inforArray['data']}',
+                    '{$inforArray['data']}','{$inforArray['data']}','{$inforArray['data']}','{$inforArray['data']}','{$inforArray['data']}')" ;
+        $arr =null ;
+        if ($this->sqlLink()->query($sql) ===TRUE){
+            $code =0 ;
+//            echo "succ" ;
+        }else{
+            $code =1 ;
+//            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
+        }
 
+        $this->utilTool()->combinationOfData("productInformationAddition" ,$code ,$arr) ;
+        $this->closeDB() ;
     }
 
     function commodityInformationModification(){    //  商品信息修改
@@ -227,6 +299,27 @@ class SqlUtils{
 
     }
 
+    function commodityInformationIdQuery($productId){           //  根据ID查询
+        $sql ="select name ,price ,pic_urls ,merchants_address ,merchants_serve ,merchants_sales ,product_classify_ids ,
+                quantity_available ,quantity_purchased ,evaluate_num ,collection_num ,monthly_sale from product_table 
+                  where id='{$productId}'" ;
+        $result["data"] = array();
+        if ($res =$this->sqlLink()->query($sql)){
+            $code =0 ;
+            while ($row =mysqli_fetch_assoc($res)){
+//            while ($row =mysqli_fetch_array($res ,MYSQLI_ASSOC)){
+//                $result[] =$row ;
+                array_push($result["data"] ,$row) ;
+
+            }
+            mysqli_free_result($res) ;
+        }else{
+            $code =1 ;
+//            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
+        }
+        $this->utilTool()->combinationOfData("commodityInformationIdQuery" ,$code ,$result) ;
+        $this->closeDB() ;
+    }
     function commodityInformationQuery(){           //  商品信息查询,搜索框，根据名称搜索, 根据ID查询
 
     }
@@ -235,7 +328,8 @@ class SqlUtils{
         // host sale
 //        评价数 、商品名称 、商品图片 、收藏数 、月销量 、价格
 //        evaluate_num ,name ,pic_url  ,collection_num ,monthly_sale ,price
-        $sql="select id ,name ,price ,pic_url ,evaluate_num ,collection_num ,monthly_sale from product_table ;" ;
+//        $sql="select id ,name ,price ,pic_url ,evaluate_num ,collection_num ,monthly_sale from product_table order by id limit 10;" ;       // 前十条
+        $sql="select id ,name ,price ,pic_url ,evaluate_num ,collection_num ,monthly_sale from product_table limit 10;" ;       // 随机显示前十条
         $result["data"] = array();
         if ($res =$this->sqlLink()->query($sql)){
             $code =0 ;

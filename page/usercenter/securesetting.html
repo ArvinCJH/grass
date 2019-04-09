@@ -3,7 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../css/user.css">
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
+    <script src="../js/jquery-2.1.0.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
     <title>安全设置</title>
+    <script type="text/javascript">
+        $(function () {
+            // var userid = 1;
+            var userid = $.cookie('userid');
+            $("#secu_changePassbutton").click(function () {
+                // alert("test") ;
+                var nowPass =$("#secure_nowpass").val() ;
+                var changePass =$("#secure_changepass").val() ;
+                var submitPass =$("#secure_submitpass").val() ;
+                var msg =nowPass+changePass+submitPass ;
+                // showTip("20cv" ,msg)
+                var num =2 ;
+                if (nowPass.length!=0 && changePass.length!=0 && submitPass.length!=0){
+                    if (changePass != submitPass){
+                        showTip("000" ,"两次密码密码不匹配") ;
+                    } else {
+                        var info ="userid="+userid+"&userpass="+nowPass+
+                            "&newpass="+changePass ;
+                        changeMyPass(num ,info) ;
+                    }
+                } else showTip(7) ;
+            })
+        })
+
+        function changeMyPass(num ,info){
+            var reqUrl ="" ;
+            if (num ==2){
+                reqUrl ="passChange" ;
+            }
+
+            getMyResponData(reqUrl ,info ,function (data) {
+                if (data.code ==0){
+                    // alert("修改成功") ;
+                    showTip(num) ;
+                }else if (data.code ==1){
+                    // alert("修改失败") ;
+                    showTip("0c11" ,"原密码错误") ;
+                }else if (data.code ==2){
+                    showTip(7)
+                }else if (data.code ==3){
+                    showTip(-num) ; // 密码修改失败
+                }
+
+            })
+
+
+        }
+
+    </script>
 </head>
 <body>
 
@@ -12,11 +64,10 @@
         <div class="user_box_two_message_1">
             <p>安全设置</p>
             <form class="user_box_two_from" method="post" >
-                <label>当前密码：<input type="text" name="username" ></label><br>
-                <label>新密码：<input type="text" name="moblie" ></label><br>
-                <label>确认密码：<input type="text" name="occupation" ></label><br>
-                <label id="showtip"></label>
-                <label><button onclick="javascript:void(0)" class="user_button_one">修改完成</button></label>
+                <label>当前密码：<input id="secure_nowpass" type="text" name="username" ></label><br>
+                <label>新密码：<input id="secure_changepass" type="text" name="moblie" ></label><br>
+                <label>确认密码：<input id="secure_submitpass" type="text" name="occupation" ></label><br>
+                <label><button onclick="javascript:void(0)" type="button" id="secu_changePassbutton" class="user_button_one">修改密码</button></label>
             </form>
             <label><a href="../../index.html" target="_parent"><button class="user_button_two">返回首页</button></a></label>
         </div>
