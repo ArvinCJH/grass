@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-04-02 23:47:49
+Date: 2019-04-09 18:51:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,6 +44,37 @@ INSERT INTO `address_manager_table` VALUES ('4', '1', '0', '1', 'ddd', 'ddd', 'd
 INSERT INTO `address_manager_table` VALUES ('5', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
 
 -- ----------------------------
+-- Table structure for merchants_certification
+-- ----------------------------
+DROP TABLE IF EXISTS `merchants_certification`;
+CREATE TABLE `merchants_certification` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of merchants_certification
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for merchants_start
+-- ----------------------------
+DROP TABLE IF EXISTS `merchants_start`;
+CREATE TABLE `merchants_start` (
+  `id` int(11) NOT NULL,
+  `merchants_id` int(11) DEFAULT NULL,
+  `server` int(11) DEFAULT '5' COMMENT '服务星级',
+  `describe` int(11) DEFAULT '5' COMMENT '描述星级',
+  `quality` int(11) DEFAULT '5' COMMENT '质量星级',
+  `average_star` int(11) DEFAULT '5' COMMENT '平均星级',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of merchants_start
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for merchants_table
 -- ----------------------------
 DROP TABLE IF EXISTS `merchants_table`;
@@ -55,7 +86,9 @@ CREATE TABLE `merchants_table` (
   `sales` bigint(20) DEFAULT '0' COMMENT '出售数量',
   `serve_list` varchar(255) DEFAULT NULL COMMENT '服务列表，7天无理由退货，包邮',
   `type` int(11) DEFAULT NULL COMMENT '商家类型',
-  PRIMARY KEY (`id`)
+  `start_id` int(11) DEFAULT NULL COMMENT '星级 ID',
+  `certification_id` int(11) NOT NULL DEFAULT '-1' COMMENT '商家认证',
+  PRIMARY KEY (`id`,`certification_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -91,13 +124,13 @@ CREATE TABLE `product_table` (
   `merchants_address` varchar(25) DEFAULT NULL COMMENT '商家地址',
   `merchants_sales` varchar(25) DEFAULT NULL COMMENT '是否在热卖',
   `merchants_serve` varchar(25) DEFAULT NULL COMMENT '本产品的商家服务',
-  `product_classify_id` text COMMENT '可选服务(list)',
+  `product_classify_ids` text COMMENT '可选服务(list)',
   `quantity_available` bigint(20) DEFAULT NULL COMMENT '可购买数量（产品总数）',
   `quantity_purchased` bigint(20) DEFAULT NULL COMMENT '已购买数量(销售数)',
   `evaluate_num` int(11) DEFAULT NULL COMMENT '评论数',
-  `evaluate_id` int(11) DEFAULT NULL COMMENT '评论id',
+  `evaluate_ids` text COMMENT '评论id',
   `collection_num` int(11) DEFAULT NULL COMMENT '收藏数',
-  `collection_id` int(11) DEFAULT NULL COMMENT '收藏id',
+  `collection_ids` text COMMENT '收藏id',
   `monthly_sale` int(11) DEFAULT NULL COMMENT '月销量',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
@@ -148,6 +181,19 @@ CREATE TABLE `shopping_car` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for user_certification
+-- ----------------------------
+DROP TABLE IF EXISTS `user_certification`;
+CREATE TABLE `user_certification` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of user_certification
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for user_table
 -- ----------------------------
 DROP TABLE IF EXISTS `user_table`;
@@ -162,10 +208,11 @@ CREATE TABLE `user_table` (
   `user_sex` smallint(6) DEFAULT NULL COMMENT 'man 0 ,girl 1',
   `user_mail` varchar(255) DEFAULT NULL,
   `occupation` varchar(255) DEFAULT NULL COMMENT '职业',
-  PRIMARY KEY (`id`)
+  `certification_id` int(11) NOT NULL DEFAULT '-1' COMMENT '实名认证',
+  PRIMARY KEY (`id`,`certification_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_table
 -- ----------------------------
-INSERT INTO `user_table` VALUES ('1', 'sgg', '123', '1', '2019-03-30', '13435500345', '1', '2', 'jiji6143@163.com', 'student');
+INSERT INTO `user_table` VALUES ('1', 'sgg', '123', '1', '2019-03-30', '13435500345', '1', '2', 'jiji6143@163.com', 'student', '-1');

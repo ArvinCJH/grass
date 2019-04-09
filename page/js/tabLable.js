@@ -81,9 +81,7 @@
                     alldivs.removeClass('showflip').addClass('make_transist').addClass('hideflip');
                     thisform.find('div'+thislink).addClass('make_transist').addClass('showflip');
                 }
-
                 firstdiv.css('height',thisdivwidth+'px');
-
             });
 
         },
