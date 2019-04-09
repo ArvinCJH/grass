@@ -10386,7 +10386,7 @@ function getFromatTime(){
 }
 function getMyResponData(requestUrl ,myData,callback){
     var url="http://localhost/page/php/"+requestUrl+".php" ;
-    var request =new XMLHttpRequest() ;
+    var request =new XMLHttpRequest() ;  // 200 404
     $.ajax({
         url:url ,
         type:"POST" ,
@@ -10477,6 +10477,9 @@ function showTip(tipmsg ,tipCode) {
     } else if (tipmsg =="6"){
         tipStr ="取消分享" ;
         hasReflash =false ;
+    }  else if (tipmsg =="8"){
+        tipStr ="登录成功" ;
+        hasReflash =false ;
     } else if (tipmsg =="-1"){
         tipStr ="增加失败" ;
     } else if (tipmsg =="-2"){
@@ -10491,6 +10494,9 @@ function showTip(tipmsg ,tipCode) {
         tipStr ="分享失败" ;
     } else if (tipmsg =="7"){
         tipStr ="请检查数据是否为空" ;
+        hasReflash =false ;
+    }  else if (tipmsg =="-8"){
+        tipStr ="用户名或密码错误" ;
         hasReflash =false ;
     } else {
         hasReflash =false ;
