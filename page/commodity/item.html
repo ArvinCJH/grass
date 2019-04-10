@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/user.css">
+    <link rel="stylesheet" type="text/css" href="../css/item.css">
+    <link rel="shortcut icon" type="image/x-icon" href="http://localhost/images/种草猫.png"/>
+    <script src="../js/jquery-2.1.0.js" ></script>
+    <script src="../js/jquery.cookie.js" ></script>
+    <script src="../js/tabLable.js" ></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function ($) {
+                $('#itemTab').tabulous({effect:'scale'})
+            })
+        })
+
+    </script>
+</head>
+<body>
+<div style="height: 400px">
+    <h1>test</h1>
+</div>
+
+<div style="width: 90% ;height: 800px">
+    <div class="shop-module" style="background-color: #5577ba ;width: 20% ;float: left">
+    <h3>
+        <div class="shopname"><a>shopname</a><div>小图标</div></div>
+    </h3>
+    </div>
+    <div id="item_fixed_part" class="tabpanel-module" style="background-color: #CC0000 ;width: 50% ;float: left">
+        <div id="itemTab">
+            <ul>
+                <li><a href="#goodsDetails">商品详情</a></li>
+                <li><a href="#cumulativeAssessment">累计评价<em>1</em></a></li>
+                <li><a href="#recommendation">本店同类商品</a></li>
+            </ul>
+
+            <div id="tabs_container">
+                <!--商品详情-->
+                <div id="goodsDetails" >
+                    <p>goodsDetails</p>
+                </div>
+                <!--累计评价-->
+                <div id="cumulativeAssessment">
+                    <p>cumulativeAssessment</p>
+                </div>
+                <!--商品推荐-->
+                <div id="recommendation">
+                    <p>recommendation</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../js/itemFloat.js" ></script>
+    <div class="ext-module" style="background-color: #5577ba ;width: 30% ;float: right">
+        <ul>
+            <li><a>商品详情</a></li>
+            <li><a>累计评价<em>1</em></a></li>
+        </ul>
+    </div>
+</div>
+
+<div style="height: 400px">
+    <h1>footer</h1>
+</div>
+</body>
+</html>
