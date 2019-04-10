@@ -148,7 +148,7 @@ function getData(request ,myData) {
     getMyResponData(request ,myData ,function (data) {
         console.log(data) ;
         if (data.code ==0){
-            setHostMsg(data.data)
+            setHostMsg(data.data)  // v -》method( callback) -> new value
         }else if (data.code ==1){
             alert("插入失败") ;
         }else if (data.code ==2){

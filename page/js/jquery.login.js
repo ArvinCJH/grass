@@ -6,11 +6,12 @@ $(function () {
         var loginname =$("#login_name").val() ;
         var loginpass =$("#login_pass").val() ;
         if (loginname.length !=0 && loginpass.length !=0){
-            var myData ="&username="+loginname+"&password="+loginpass  ;
+            var myData ="username="+loginname+"&password="+loginpass  ;
             // var myData ="handler="+handler+"&username="+loginname+"&password="+loginpass  ;
             var requestUrl ="login" ;
             getMyResponData(requestUrl ,myData ,function (data) {
                 if (data.code ==0){
+                    showTip(8) ;
                     $userid =data.userid ;
                     $username =data.username ;
                     if ($.cookie('userid')&&$.cookie('username')) { // 存在
@@ -21,13 +22,16 @@ $(function () {
                         window.location.href="../../index.html" ;
                     }
                 }else if (data.code ==1){
-                    alert("用户名或密码错误") ;
+                    showTip(-8) ;
+                    // alert("用户名或密码错误") ;
                 } else if (data.code ==2){
-                    alert("用户名或密码为空") ;
+                    showTip(7) ;
+                    // alert("用户名或密码为空") ;
                 }
             })
         } else {
-            alert("is empty") ;
+            showTip(7) ;
+            // alert("is empty") ;
         }
     }) ;
 })
