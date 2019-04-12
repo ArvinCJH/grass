@@ -1,5 +1,6 @@
+var userid="1" ;
 $(function () {
-    var userid = $.cookie('userid');
+    // userid = $.cookie('userid');
     // var userid =1;
     if (userid ==null){
         window.location.href="../../index.html" ;
@@ -41,26 +42,6 @@ $(function () {
                 "&receive_phone="+receive_phone+"&address_default="+defaultStatu+"&userid="+userid;
             var num =1 ;
             forServiceData(num ,myData) ;
-            // $.ajax({
-            //     url:url ,
-            //     type:"POST" ,
-            //     dataType:"json" ,
-            //     data:myData ,
-            //     success:function (data) {
-            //         // alert(data) ;
-            //         // console.log(data) ;
-            //         if (data.code ==0){
-            //             window.location.reload(true) ;      //  刷新当前页面
-            //             // alert("增加成功") ;
-            //         }else if (data.code ==1){
-            //             alert("增加失败") ;
-            //         }else if (data.code ==2){
-            //             alert("请检查数据是否为空") ;
-            //         }
-            //     } ,error:function () {
-            //         alert("error"+request.status) ;
-            //     }
-            // }) ;
         } else {
             showTip(7)
         }
@@ -70,31 +51,7 @@ $(function () {
         var myData = "userid=" + userid;
         var num =4 ;
         forServiceData(num ,myData) ;
-    //     $.ajax({
-    //         url: url,
-    //         type: "POST",
-    //         dataType: "json",
-    //         data: myData,
-    //         success: function (data) {
-    //             // alert(data) ;
-    //             console.log(data);
-    //             if (data.code == 0) {
-    //                 jsonMsg(data.data);
-    //                 if((data.data).length ==0){
-    //                     // alert("空") ;
-    //                     var trs ="<lable>未添加地址</lable>" ;
-    //                     $("#hasAddress_tbody").prepend(trs) ;
-    //                 }
-    //                 // alert("查询成功");
-    //             } else if (data.code == 1) {
-    //                 alert("查询失败");
-    //             } else if (data.code == 2) {
-    //                 alert("请检查数据是否为空");
-    //             }
-    //         }, error: function () {
-    //             alert("error" + request.status);
-    //         }
-    //     });
+
     }
 
 
@@ -109,12 +66,16 @@ function forServiceData(num ,myData){
         requestUrl="addressManagerAdd"
     }else if (num ==4){       // 查询
         requestUrl="addressManagerQuery"
+    }else if (num ==3){       // 删除
+        requestUrl="addressDel"
     }else {
         showTip("isNum") ;
     }
 
 
     getMyResponData(requestUrl ,myData ,function (data) {
+        console.log(myData) ;
+        console.log(data) ;
         if (data.code == 0) {
             if (num ==1){
                 showTip(num)
@@ -127,9 +88,12 @@ function forServiceData(num ,myData){
                 }else {
                     jsonMsg(data.data);
                 }
+                // alert("查询成功");
+            }else if (num ==3){
+                showTip(num)
             }
 
-            // alert("查询成功");
+
         } else if (data.code == 1) {
             showTip(-num) ;
         } else if (data.code == 2) {
@@ -154,13 +118,14 @@ function jsonMsg(jsonData) {
 
     $(".hasAddress_div").each(function (i ,n) {
         $("#address_delete"+i).click(function () {          // 删除
-            console.log("i"+$(this).attr("addressid")) ;
             showCheckDialog({
                 title:'是否确认删除本地址',
                 content: ''+$("#address_realaddress"+i).val(),
                 noText:'取消',
                 yesFn:function () {
-                    console.log("del") ;
+                    var num =3 ;
+                    var myData="userid="+userid+"&addressid="+$("#address_delete"+i).attr("addressid") ;
+                    forServiceData(num ,myData)
                 }
             })
         }) ;
