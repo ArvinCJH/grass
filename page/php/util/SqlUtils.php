@@ -270,6 +270,30 @@ class SqlUtils{
         $this->closeDB() ;
     }
 
+    function userAddressSetDefault($userid ,$addressid,$otherId){        //  用户地址查询
+        /* userAddressDel
+         * code 0 success
+         * code 1 fail
+         * */
+//        $sql = "UPDATE user_table SET user_sex='{$infosex}',mobile='{$infomobile}' ,birthday='{$infobirth}' ,occupation='{$infooccr}'
+//            WHERE id='{$userid}'";
+        foreach ($otherId as $other){
+            $sql ="UPDATE  address_manager_table SET address_default='0' where user_id='{$userid}' and id='{$other}'" ;
+            $this->sqlLink()->query($sql) ;
+        }
+        $sql ="UPDATE  address_manager_table SET address_default='1' where user_id='{$userid}' and id='{$addressid}'" ;
+        $result = null;
+        if ($res =$this->sqlLink()->query($sql)){
+            $code =0 ;
+
+        }else{
+            $code =1 ;
+//            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
+        }
+        $this->utilTool()->combinationOfData("userAddressSetDefault" ,$code ,$result) ;
+        $this->closeDB() ;
+    }
+
     /*
      * 商品类信息部分
      * */

@@ -130,18 +130,18 @@ function getHotMsg() {      //  获取热卖列表
 function setHostMsg(data) {
     var body="" ;
     $.each(data ,function (n ,value) {
-        // value.id ;
-        // value.name ;
-        // value.price ;
-        // value.pic_url ;
-        // value.evaluate_num ;
-        // value.collection_num ;
-        // value.monthly_sale ;
-        body +="<div class='bottom_commodity_ul'><ul><li><a><img src='"+value.pic_url+"'></a><a style='width: 200px '>"+value.name+"</a><div style='padding: 20px'><a>评价<em>"+value.evaluate_num+"</em></a><a style='padding-left: 20px'>收藏<em>"+value.collection_num+"</em></a></div><div><a style='color: red ;font-size: 20px'><span>￥</span><em>"+value.price+"</em></a><a style='color: grey ;font-size: 10px ;text-decoration:line-through '><span>￥</span><em>40</em></a><a style='float: right;color: grey'>月销<em>"+value.monthly_sale+"</em>笔</a></div></li></ul></div>"
+        body +="<div itemId='"+value.id+"' class='bottom_commodity_ul pointer'><ul><li><a><img src='"+value.pic_url+"'></a><a style='width: 200px '>"+value.name+"</a><div style='padding: 20px'><a>评价<em>"+value.evaluate_num+"</em></a><a style='padding-left: 20px'>收藏<em>"+value.collection_num+"</em></a></div><div><a style='color: red ;font-size: 20px'><span>￥</span><em>"+value.price+"</em></a><a style='color: grey ;font-size: 10px ;text-decoration:line-through '><span>￥</span><em>"+value.merchants_sales+"</em></a><a style='float: right;color: grey'>月销<em>"+value.monthly_sale+"</em>笔</a></div></li></ul></div>"
 
     }) ;
 
     $("#botton_guessULike").html(body) ;
+    $(".bottom_commodity_ul").each(function (i ,n) {
+        $(n).on("click" ,function () {
+            var itemId =$(this).attr("itemId") ;
+            window.location.href="/page/commodity/item.html?itemId="+itemId ;
+        })
+
+    }) ;
 }
 
 function getData(request ,myData) {
@@ -152,29 +152,10 @@ function getData(request ,myData) {
         }else if (data.code ==1){
             alert("插入失败") ;
         }else if (data.code ==2){
-            alert("请检查数据是否为空") ;
+            showTip(7)
         }
     })
 }
-
-/*  简单记录
-* 数据在页面之前的传递方式
-*   1.用户信息数据通过 cookie 方式传递
-*   2.其它信息用 url 方式传递
-*       传递页
-*       var obj = a.value; //传给弹出页面参数
-        var url = 'jxb.html?obj='+obj;
-        url = encodeURI(url);
-        window.open(url, "", "width=600,height=400");
-
-
-        接收页
-        var url = decodeURI(window.location.href);
-
-        var argsIndex = url .split("?obj=");
-        var arg = argsIndex[1];
-* */
-
 
 function msgToNextPage(url ,message) {
     var url =url+'?'+message ;

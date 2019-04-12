@@ -10,7 +10,9 @@
     <script src="../js/jquery.cookie.js" ></script>
     <script src="../js/tabLable.js" ></script>
     <script type="text/javascript">
+        var itemId ="" ;
         $(function () {
+            itemId =UrlParam.paramValues("itemId") ;
             $(document).ready(function ($) {
                 $('#itemTab').tabulous({effect:'scale'})
             })

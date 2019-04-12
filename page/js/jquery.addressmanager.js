@@ -1,7 +1,6 @@
-var userid="1" ;
+// var userid="1" ;
 $(function () {
-    // userid = $.cookie('userid');
-    // var userid =1;
+    userid = $.cookie('userid');
     if (userid ==null){
         window.location.href="../../index.html" ;
     }else {
@@ -14,7 +13,7 @@ $(function () {
         // $("#addressManagerFrom").slideDown(1000) ;      // 滑动效果
         $("#addressManagerFrom").slideToggle(1000) ;      // 滑动效果
         // $('#addressManager_Form')[0].reset() ;
-        $('form')[0].reset();
+        $('from')[0].reset();
         // $("#addressManagerFrom").show() ;
 
     }) ;
@@ -112,11 +111,12 @@ function jsonMsg(jsonData) {
             addressdefault ="默认地址" ;
         }
         // trs +="<tr><td id=\"address_realname\">"+value.consignee+"</td><td id=\"address_realaddress\">"+value.address_detail+"</td><td id=\"address_realphone\">"+value.receive_phone+"</td><td id=\"address_realisdefault\">"+addressdefault+"</td></tr>" ;
-        msgBody +="<div class='hasAddress_div'><ul><li class='hasAddress_lileft' id='address_realname"+n+"'>"+value.consignee+"</li><li class='hasAddress_limiddle' id='address_realaddress"+n+"'>"+value.address_detail+"</li><li class='hasAddress_lileft' id='address_postalCode"+n+"'>邮政编码</li><li class='hasAddress_lileft' id='address_realphone"+n+"'>"+value.receive_phone+"</li><li class='hasAddress_liright' id='address_optionlist"+n+"'><a id='address_realisdefault"+n+"'>"+addressdefault+"</a><a id='address_edit"+n+"'>编辑</a><a addressid='"+value.id+"' id='address_delete"+n+"'>删除</a></li></ul></div>" ;
+        msgBody +="<div class='hasAddress_div'><ul><li class='hasAddress_lileft' id='address_realname"+n+"'>"+value.consignee+"</li><li class='hasAddress_limiddle' id='address_realaddress"+n+"'>"+value.address_detail+"</li><li class='hasAddress_lileft' id='address_postalCode"+n+"'>邮政编码</li><li class='hasAddress_lileft' id='address_realphone"+n+"'>"+value.receive_phone+"</li><li class='hasAddress_liright' id='address_optionlist"+n+"'><a addressdefault-code='"+value.address_default+"' id='address_realisdefault"+n+"'>"+addressdefault+"</a><a id='address_edit"+n+"'>编辑</a><a addressid='"+value.id+"' id='address_delete"+n+"'>删除</a></li></ul></div>" ;
     }) ;
     $("#hasAddress").prepend(msgBody) ;
 
     $(".hasAddress_div").each(function (i ,n) {
+        console.log(n) ;
         $("#address_delete"+i).click(function () {          // 删除
             showCheckDialog({
                 title:'是否确认删除本地址',
@@ -136,8 +136,18 @@ function jsonMsg(jsonData) {
             $("#address_username").val($("#address_realname"+i).val());
             $("#address_phone").val($("#address_realphone"+i).val());
             // $("input[type='checkbox']").is(':checked');选中为true,未选中为false；
-            var address_default =$("#address_default").is(":checked") ;
+            defaultCode =$("#address_realisdefault"+i).attr("addressdefault-code") ;
+            if (defaultCode ==1) {
+                $("#address_default").attr("checked", true)
+            }
+            // var address_default =.is(":checked") ;
             $("#addressManagerFrom").show() ;
+        }) ;
+        $("#address_realisdefault"+i).click(function () {      //  设置默认
+            var idList="";
+            var myData="userid="+userid+"&addressid="+$("#address_delete"+i).attr("addressid")+"&$otherId="+0 ;
+
+
         }) ;
     })
 }
