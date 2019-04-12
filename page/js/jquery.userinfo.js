@@ -12,6 +12,7 @@ $(function () {
 
             $("input[name='rd']:checked").val();
             * */
+    // var userid = 1;
     var userid = $.cookie('userid');
     if (userid!=null){      // cookie 不为空 ，说明已经登录
         // alert("empty is not") ;
@@ -67,7 +68,7 @@ $(function () {
             "&infobirth="+infobirth+"&infomobile="+infomobile+
             "&infooccr="+infooccr+"&userid="+userid ;
 
-        getUserInfo(1 ,myData) ;
+        getUserInfo(2 ,myData) ;
         // $.ajax({
         //     url:url ,
         //     type:"POST" ,
@@ -95,7 +96,7 @@ $(function () {
 
     function getUserInfo(num ,myData){
         var reqUrl ="" ;
-        if (num ==1){
+        if (num ==2){
             reqUrl ="userInfoSubmit" ;
         }
 

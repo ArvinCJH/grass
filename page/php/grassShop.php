@@ -1,8 +1,8 @@
 <?php
-require 'util/handlerUtil.php' ;
+require 'util/HandlerUtil.php';
 $MYHandler=$_POST["handler"] ;
 
-$handlerU =new handlerUtil() ;
+$handlerU =new HandlerUtil() ;
 $handlerU ->requestHanler($MYHandler) ;
 
 

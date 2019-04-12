@@ -28,3 +28,26 @@ ul,li{ padding:0;margin:0;list-style:none}
 
 .address_box{width: 810px;height: 540px;margin: 30px 30px;}
 .address_box_one p{color: #D4237A;background-color: rgba(220, 220, 220, 0.2);margin: 5px 5px;}
+
+
+.hasAddress_div{
+    width: 90% ;
+    display:inline-block;
+    background-color: rgba(128,128,128,0.25) ;
+    margin: 5px
+}
+.hasAddress_lileft{
+    float: left ;
+    width: 15%
+}
+.hasAddress_limiddle{
+    float: left;
+    width: 30%
+}
+.hasAddress_liright{
+    float: right;
+    width: 25%
+}
+.hasAddress_liright a{
+    padding-right: 10px;
+}

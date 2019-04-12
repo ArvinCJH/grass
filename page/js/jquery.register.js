@@ -44,38 +44,27 @@ $(function () {
             && passwords.length !=0&& envelope.length !=0) {
             // 用户名未规定规则
             // 两个密码是否相等
+            var handler="register" ;
+            var myData ="handler="+handler+"&username="+username+"&password="+password+"&passwords="+passwords+"&envelope="+envelope ;
             // if (password ==passwords ){		// 密码相等，进行网络请求
-            var request =new XMLHttpRequest() ;
-            var url="php/register.php" ;
-            var myData ="username="+username+"&password="+password+"&passwords="+passwords+"&envelope="+envelope ;
-            $.ajax({
-                url:url ,
-                type:"POST" ,
-                dataType:"json" ,
-                data:myData ,
-                async:false ,       // 及时获取信息，取消异步获取，否则因时间过长而无法显示数据
-                success:function (data) {
-                    // alert("*****") ;
-                    if (data.code ==0){
-                        var userid = $.cookie('userid');
-                        var username = $.cookie('username');
-                        if (username !=null&& userid !=null) {
-                            $.cookie("userid" ,"", {expires: -1} ) ;
-                            $.cookie("username" ,"", {expires: -1}) ;
-                        }
-                        window.location.href="http://localhost/page/login.html" ;
-                    }else if (data.code ==1){
-                        alert("插入失败") ;
-                    } else if (data.code ==2){
-                        alert("请检查填写是否为空") ;
-                    }else if (data.code==3){
-                        alert("用户已存在");
+            getMyResponData(myData ,function (data) {
+                if (data.code ==0){
+                    var userid = $.cookie('userid');
+                    var username = $.cookie('username');
+                    if (username !=null&& userid !=null) {
+                        $.cookie("userid" ,"", {expires: -1} ) ;
+                        $.cookie("username" ,"", {expires: -1}) ;
                     }
-                } ,error:function () {
-                    alert("error"+request.status) ;
+                    alert("注册成功") ;
+                    window.location.href="http://localhost/page/login.html" ;
+                }else if (data.code ==1){
+                    alert("插入失败") ;
+                } else if (data.code ==2){
+                    alert("请检查填写是否为空") ;
+                }else if (data.code==3){
+                    alert("用户已存在");
                 }
-
-            }) ;
+            })
 
             // }
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="../css/user.css">
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
     <script src="../js/jquery-2.1.0.js" ></script>
     <script src="../js/jquery.cookie.js" ></script>
     <script src="../js/jquery.addressmanager.js" ></script>
@@ -26,37 +27,35 @@
             </div>
             <!--<div id="addressManagerFrom" style="display: none">-->
             <div class="address_from" id="addressManagerFrom" style="display: none">
-                <from method="post" class="user_box_two_from">
+                <from id="addressManager_Form" class="user_box_two_from">
                     <label>地区：<input type="text" name="address" id="address_name"></label><br>
                     <label>邮政编码：<input type="text" name="code" id="postal_code"></label><br>
                     <label>街道地址：<textarea style="resize:none;" cols="40" rows="6" style="OVERFLOW:hidden" name="street_address" id="address_streetid"></textarea></label><br>
                     <!--<label>街道地址：<input type="text" name="street_address" id="address_streetid"></label><br>-->
                     <label>收货人：<input type="text" name="address_name" id="address_username"></label><br>
-                    <label>手机：<input type="text" name="phone" id="address_phone"></label><br>
+                    <label>手机：<input type="text" name="phone" id=nddress_phone"></label><br>
                     <label>设置为默认地址<input type="checkbox" name="mycheck" id="address_default"></label><br>
-                    <label><button id="address_new" class="adress_new_one">新增</button></label><br>
-                    <label><button id="adrress_cancel">取消</button></label>
+                    <label><button type="button" id="address_new" class="adress_new_one">新增</button></label><br>
+                    <label><button type="reset" id="adrress_cancel">取消</button></label>
                 </from>
             </div>
             <!--</div>-->
             <div id="hasAddress">
-                <div style="width: 90% ;display:inline-block;background-color: rgba(128,128,128,0.25) ;margin: 5px">
-                    <!--<tbody id="hasAddress_tbody">-->
-                    <ul>
-                        <li style="float: left ;width: 15%" id="address_realname">姓名</li>
-                        <li style="float: left;width: 30%" id="address_realaddress">地址</li>
-                        <li style="float: left;width: 15%" id="address_realphone">邮政编码</li>
-                        <li style="float: left;width: 15%" id="address_postalCode">手机号</li>
-                        <li style="float: right;width: 25%" id="address_optionlist">
-                            <a id="address_realisdefault">设为默认</a>
-                            <a id="address_edit">编辑</a>
-                            <a id="address_delete">删除</a>
-                        </li>
-
-                    </ul>
-                    <!--</tbody>-->
-
-                </div>
+                <!--<div class="hasAddress_div">-->
+                    <!--&lt;!&ndash;<tbody id="hasAddress_tbody">&ndash;&gt;-->
+                    <!--<ul>-->
+                        <!--<li class="hasAddress_lileft" id="address_realname">姓名</li>-->
+                        <!--<li class="hasAddress_limiddle" id="address_realaddress">地址</li>-->
+                        <!--<li class="hasAddress_lileft" id="address_realphone">邮政编码</li>-->
+                        <!--<li class="hasAddress_lileft" id="address_postalCode">手机号</li>-->
+                        <!--<li class="hasAddress_liright" id="address_optionlist">-->
+                            <!--<a id="address_realisdefault">设为默认</a>-->
+                            <!--<a id="address_edit">编辑</a>-->
+                            <!--<a id="address_delete">删除</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <div class='hasAddress_div'><ul><li class='hasAddress_lileft' id='address_realname'>姓名</li><li class='hasAddress_limiddle' id='address_realaddress'>地址</li><li class='hasAddress_lileft' id='address_realphone'>邮政编码</li><li class='hasAddress_lileft' id='address_postalCode'>手机号</li><li class='hasAddress_liright' id='address_optionlist'><a id='address_realisdefault'>设为默认</a><a id='address_edit'>编辑</a><a id='address_delete'>删除</a></li></ul></div>
 
                 <!--<table>-->
                     <!--<tbody id="hasAddress_tbody">-->
