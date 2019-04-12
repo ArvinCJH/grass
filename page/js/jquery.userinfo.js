@@ -12,8 +12,8 @@ $(function () {
 
             $("input[name='rd']:checked").val();
             * */
-    var userid = 1;
-    // var userid = $.cookie('userid');
+    // var userid = 1;
+    var userid = $.cookie('userid');
     if (userid!=null){      // cookie 不为空 ，说明已经登录
         // alert("empty is not") ;
         var request =new XMLHttpRequest() ;
