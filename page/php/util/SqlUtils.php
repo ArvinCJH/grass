@@ -108,13 +108,13 @@ class SqlUtils{
          * code 2 userId 为空
          * */
         $arr =null ;
-        $sqllite ="SELECT user_sex ,username,mobile ,birthday ,occupation FROM user_table where id='{$userId}'" ;
+        $sqllite ="SELECT user_sex ,username ,mobile ,birthday ,occupation FROM user_table where id='{$userId}'" ;
         if ($this->utilTool()->hasWord($userId)){
             $reslut = $this->sqlLink()->query($sqllite);
             $n = $reslut->fetch_row();
             if ($n[0] !=null){      // 有值，查询成功
                 $code =0 ;
-                $arr=array("usersex"=>$n[0] ,"useryear"=>$n[1] ,"mobile"=>$n[2] ,"birthday"=>$n[3] ,"job"=>$n[4]);
+                $arr=array("usersex"=>$n[0] ,"username"=>$n[1] ,"mobile"=>$n[2] ,"birthday"=>$n[3] ,"job"=>$n[4]);
             }else{  // 无值，查询失败
                 $code =1 ;
             }

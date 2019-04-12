@@ -12,8 +12,8 @@ $(function () {
 
             $("input[name='rd']:checked").val();
             * */
-    // var userid = 1;
-    var userid = $.cookie('userid');
+    var userid = 1;
+    // var userid = $.cookie('userid');
     if (userid!=null){      // cookie 不为空 ，说明已经登录
         // alert("empty is not") ;
         var request =new XMLHttpRequest() ;
@@ -26,7 +26,7 @@ $(function () {
             dataType:"json" ,
             data:myData ,
             success:function (data) {
-                // console.log(data) ;
+                console.log(data) ;
                 if (data.code ==0){
                     // alert("成功") ;
                     // radios.eq(0).attr("checked" ,true) ;
