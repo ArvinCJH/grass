@@ -1,7 +1,6 @@
 <?php
 require 'util/SqlUtils.php' ;
 $userid =$_POST['userid'] ;
-$infoname =$_POST['infoname'] ;
 $infosex =$_POST['infosex'] ;
 $infobirth =$_POST['infobirth'] ;
 $infomobile =$_POST['infomobile'] ;
@@ -14,7 +13,7 @@ $infooccr =$_POST['infooccr'] ;
 //$infooccr =$_POST['occupation'] ;
 //echo $infoname ,$infosex ,$infobirth ,$infomobile ,$infooccr ,$userid;
 $sqlTool =new SqlUtils() ;
-$sqlTool->userInformationModification($userid ,$infoname,$infosex,$infobirth,$infomobile,$infooccr) ;
+$sqlTool->userInformationModification($userid ,$infosex,$infobirth,$infomobile,$infooccr) ;
 /**
  * Created by IntelliJ IDEA.
  * User: Arvin

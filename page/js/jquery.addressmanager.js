@@ -12,7 +12,8 @@ $(function () {
         // $("#addressManagerFrom").fadeIn(2000) ;      // 淡入淡出效果
         // $("#addressManagerFrom").slideDown(1000) ;      // 滑动效果
         $("#addressManagerFrom").slideToggle(1000) ;      // 滑动效果
-        $('#addressManager_Form')[0].reset() ;
+        // $('#addressManager_Form')[0].reset() ;
+        $('form')[0].reset();
         // $("#addressManagerFrom").show() ;
 
     }) ;

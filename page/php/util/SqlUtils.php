@@ -108,7 +108,7 @@ class SqlUtils{
          * code 2 userId 为空
          * */
         $arr =null ;
-        $sqllite ="SELECT user_sex ,user_year ,mobile ,birthday ,occupation FROM user_table where id='{$userId}'" ;
+        $sqllite ="SELECT user_sex ,username,mobile ,birthday ,occupation FROM user_table where id='{$userId}'" ;
         if ($this->utilTool()->hasWord($userId)){
             $reslut = $this->sqlLink()->query($sqllite);
             $n = $reslut->fetch_row();
@@ -125,7 +125,7 @@ class SqlUtils{
         $this->closeDB() ;
     }
 
-    function userInformationModification($userid ,$infoname,$infosex,$infobirth,$infomobile,$infooccr)
+    function userInformationModification($userid ,$infosex,$infobirth,$infomobile,$infooccr)
     {     //  用户信息修改
         /*
          * code 0 插入成功
@@ -133,7 +133,7 @@ class SqlUtils{
          * code 2 默认值为空
          * */
 //        $sql = "UPDATE `user_table` SET `user_year` = "+$infoname+", `user_sex` = "+$infosex+", `mobile` = "+$infomobile+", `birthday` = "+$infobirth+", `occupation` = "+$infooccr+" WHERE `user_table`.`userid` = "+$userid;
-        $sql = "UPDATE user_table SET user_sex='{$infosex}',user_year='{$infoname}',mobile='{$infomobile}' ,birthday='{$infobirth}' ,occupation='{$infooccr}'
+        $sql = "UPDATE user_table SET user_sex='{$infosex}',mobile='{$infomobile}' ,birthday='{$infobirth}' ,occupation='{$infooccr}'
             WHERE id='{$userid}'";
         $arr = null;
         if ($this->utilTool()->hasWord($infosex)) {  // 查询时以性别是否为空判断是否含有数据，所以
