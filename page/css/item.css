@@ -214,19 +214,49 @@ a:active,a:focus {
     clear: both;
 }
 
-/*左边*/
-.item-partright{
-    float: right;
-    width: 500px;
-    height: 500px;
-    color: red;
+.item{
+    width: 1180px;
+    margin:auto;
 }
+
+/*左边*/
 .item-partleft{
     float: left;
     width: 500px;
     height: 500px;
     color: #1c2738;
+    border:1px solid red;
 }
+.item-partright{
+    float: left;
+    width: 500px;
+    height: 500px;
+    border:1px solid red;
+}
+
 .clear_float{
     clear: both;
 }
+
+.item-price{
+    text-decoration:line-through;
+    color: #999;
+    /*background-color: #9b9b9b;*/
+}
+.item-sales{
+    color: red;
+    font-size: 26px;
+}
+.item-shop-one{
+
+    width: 100px;
+    height: 30px;
+}
+.item-shop-two{
+
+    width: 100px;
+    height: 30px;
+}
+
+
+
