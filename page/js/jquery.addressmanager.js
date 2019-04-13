@@ -14,12 +14,15 @@ $(function () {
         $("#addressManagerFrom").slideToggle(1000) ;      // 滑动效果
         // $('#addressManager_Form')[0].reset() ;
         $('form')[0].reset();
+        removeAddressId() ;
         // $("#addressManagerFrom").show() ;
 
     }) ;
     $("#adrress_cancel").click(function () {
         // $("#addressManagerFrom").fadeOut(2000) ;
         $("#addressManagerFrom").slideUp(500) ;
+        $('form')[0].reset();
+        removeAddressId() ;
         // $("#addressManagerFrom").hide() ;
     }) ;
 
@@ -38,12 +41,14 @@ $(function () {
             if ($(this).attr("addressid").length != 0) {
                 num =2 ;
                 addressid =$(this).attr("addressid") ;
+            }else {
+                num =1 ;
             }
         }catch (e) {        //  addressid 不存在
             num =1 ;
         }
 
-        console.log("here--------------------") ;
+
 
         // if (userRegion.length !=null &&postalCode !=null &&stressId !=null &&consignee !=null &&receive_phone !=null){
         if (userRegion.length !=0 &&postalCode.length !=0 &&stressId.length !=0 &&consignee.length !=0 ){
@@ -53,7 +58,7 @@ $(function () {
             var myData ="userRegion="+userRegion+"&postalCode="+postalCode+
                 "&stressId="+stressId+"&consignee="+consignee+
                 "&receive_phone="+receive_phone+"&address_default="+defaultStatu+"&userid="+userid+"&addressid="+addressid;
-
+            console.log("here--------------------"+myData) ;
             forServiceData(num ,myData) ;
         } else {
             showTip(7)
@@ -187,4 +192,8 @@ function jsonMsg(jsonData) {
 
 
 
+}
+
+function removeAddressId() {
+    $("#address_new").removeAttr("addressid") ;
 }
