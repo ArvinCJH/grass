@@ -10480,6 +10480,9 @@ function showTip(tipmsg ,tipCode) {
     } else if (tipmsg =="8"){
         tipStr ="登录成功" ;
         hasReflash =false ;
+    }  else if (tipmsg =="9"){
+        tipStr ="注册成功" ;
+        hasReflash =false ;
     } else if (tipmsg =="-0"){
         tipStr ="失败" ;
     } else if (tipmsg =="-1"){
@@ -10499,6 +10502,9 @@ function showTip(tipmsg ,tipCode) {
         hasReflash =false ;
     } else if (tipmsg =="-8"){
         tipStr ="用户名或密码错误" ;
+        hasReflash =false ;
+    }  else if (tipmsg =="-9"){
+        tipStr ="注册失败" ;
         hasReflash =false ;
     } else if (tipmsg =="isNum"){
         tipStr ="请检查 num 是否存在" ;

@@ -44,33 +44,42 @@ $(function () {
             && passwords.length !=0&& envelope.length !=0) {
             // 用户名未规定规则
             // 两个密码是否相等
-            var handler="register" ;
-            var myData ="handler="+handler+"&username="+username+"&password="+password+"&passwords="+passwords+"&envelope="+envelope ;
+            var myData ="username="+username+"&password="+password+"&passwords="+passwords+"&envelope="+envelope ;
             // if (password ==passwords ){		// 密码相等，进行网络请求
-            getMyResponData(myData ,function (data) {
-                if (data.code ==0){
-                    var userid = $.cookie('userid');
-                    var username = $.cookie('username');
-                    if (username !=null&& userid !=null) {
-                        $.cookie("userid" ,"", {expires: -1} ) ;
-                        $.cookie("username" ,"", {expires: -1}) ;
-                    }
-                    alert("注册成功") ;
-                    window.location.href="http://localhost/page/login.html" ;
-                }else if (data.code ==1){
-                    alert("插入失败") ;
-                } else if (data.code ==2){
-                    alert("请检查填写是否为空") ;
-                }else if (data.code==3){
-                    alert("用户已存在");
-                }
-            })
-
+            var num =9 ;
+            forServiceData(num ,myData) ;
             // }
 
             // 邮箱为自动判断是否符合规则
         }else {
-            alert("请检查填写是否为空") ;
+            showTip(7) ;
         }
     });
 })
+
+
+function forServiceData(num ,myData) {
+    var reqUrl ="" ;
+    if (num ==9){
+        reqUrl ="register" ;
+    }
+
+    getMyResponData(reqUrl ,myData ,function (data) {
+        if (data.code ==0){
+            var userid = $.cookie('userid');
+            var username = $.cookie('username');
+            if (username !=null&& userid !=null) {
+                $.cookie("userid" ,"", {expires: -1} ) ;
+                $.cookie("username" ,"", {expires: -1}) ;
+            }
+            showTip(9) ;
+            window.location.href="http://localhost/page/login.html" ;
+        }else if (data.code ==1){
+            showTip(-9) ;
+        } else if (data.code ==2){
+            alert("请检查填写是否为空") ;
+        }else if (data.code==3){
+            alert("用户已存在");
+        }
+    })
+}

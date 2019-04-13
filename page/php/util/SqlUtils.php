@@ -74,9 +74,9 @@ class SqlUtils{
          * */
 
         $arr =null ;
-        $sql = "INSERT INTO user_table(username, userpass, user_email)
+        $sql = "INSERT INTO user_table(username, userpass, user_mail)
             VALUES ('$uid', '$pwd', '$email')";     //  插入语句
-        $isExitSql ="SELECT user_email FROM user_table where userName='{$uid}'" ;    //  查询是否存在语句
+        $isExitSql ="SELECT user_mail FROM user_table where username='{$uid}'" ;    //  查询是否存在语句
         if ($this->utilTool()->hasThreeWord($uid ,$pwd ,$email)){
             $reslut = $this->sqlLink()->query($isExitSql);
             $n = $reslut->fetch_row();
