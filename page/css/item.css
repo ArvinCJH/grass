@@ -257,6 +257,14 @@ a:active,a:focus {
     width: 100px;
     height: 30px;
 }
-
+.item-ol li{
+    display: block;
+    list-style-type: decimal;
+    border: 1px solid #9b9b9b;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 2px 5px;
+}
 
 

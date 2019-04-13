@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : grass
-Source Server Version : 50505
+Source Server Version : 50605
 Source Host           : localhost:3306
 Source Database       : shop
 
 Target Server Type    : MYSQL
-Target Server Version : 50505
+Target Server Version : 50605
 File Encoding         : 65001
 
-Date: 2019-04-09 18:51:55
+Date: 2019-04-14 00:11:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,16 +32,15 @@ CREATE TABLE `address_manager_table` (
   `region` varchar(25) DEFAULT NULL COMMENT '地区',
   `address_stress` varchar(25) DEFAULT NULL COMMENT '街道',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of address_manager_table
 -- ----------------------------
-INSERT INTO `address_manager_table` VALUES ('1', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
-INSERT INTO `address_manager_table` VALUES ('2', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
-INSERT INTO `address_manager_table` VALUES ('3', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
-INSERT INTO `address_manager_table` VALUES ('4', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
-INSERT INTO `address_manager_table` VALUES ('5', '1', '0', '1', 'ddd', 'ddd', 'ddd', null, null, 'dd', 'ddd');
+INSERT INTO `address_manager_table` VALUES ('18', '1', '河源职业技术学院B区宿舍楼下', '0', '13825383075', '我', '529826', null, null, '河源职业技术学院', 'B区宿舍楼下');
+INSERT INTO `address_manager_table` VALUES ('19', '1', '河源市河源职业技术学院河源市河源职业技术学院', '1', '18344209482', '彩玲', '518000', null, null, '河源市河源职业技术学院', '河源市河源职业技术学院');
+INSERT INTO `address_manager_table` VALUES ('20', '2', '河源市河职院', '0', '18344209482', '小A', '518000', null, null, '河源市', '河职院');
+INSERT INTO `address_manager_table` VALUES ('21', '2', '广州市白云区', '0', '13825383075', '小C', '500000', null, null, '广州市', '白云区');
 
 -- ----------------------------
 -- Table structure for merchants_certification
@@ -133,17 +132,23 @@ CREATE TABLE `product_table` (
   `collection_ids` text COMMENT '收藏id',
   `monthly_sale` int(11) DEFAULT NULL COMMENT '月销量',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product_table
 -- ----------------------------
-INSERT INTO `product_table` VALUES ('1', '一次性纸杯 奶茶咖啡打包杯外带杯100只特厚', '23', null, 'product_pic/ycxnczb100.webp', null, null, null, null, null, null, '10', null, '4544', null, '1000');
-INSERT INTO `product_table` VALUES ('2', '加厚加大可机洗牛津布野餐垫防潮垫送妈咪包', '118', null, 'product_pic/jhjdkjxnjbycd.webp', null, null, null, null, null, null, '10', null, '1550', null, '400');
-INSERT INTO `product_table` VALUES ('3', '2019春夏新款中长款防紫外线防晒衣女', '179', null, 'product_pic/cxxkzckfzwxfsy.webp', null, null, null, null, null, null, '8', null, '406', null, '840');
-INSERT INTO `product_table` VALUES ('4', '大号紫砂茶叶罐普洱茶缸私藏密封茶缸茶叶桶', '218', null, 'product_pic/dhzscygpecgscmfcg.webp', null, null, null, null, null, null, '153', null, '724', null, '1520');
-INSERT INTO `product_table` VALUES ('5', '牛皮纸敞口盒船盒鸡米花盒薯条盒炸鸡烤翅盒', '110', null, 'product_pic/npzckcchjmhhsth.webp', null, null, null, null, null, null, '28', null, '302', null, '280');
-INSERT INTO `product_table` VALUES ('6', '酿酒机设备小型家用白酒纯露全自动烧酒家庭', '688', null, 'product_pic/njjsbxxjybjclqzdz.webp', null, null, null, null, null, null, '10', null, '19542', null, '468');
+INSERT INTO `product_table` VALUES ('1', '一次性纸杯 奶茶咖啡打包杯外带杯100只特厚', '23', null, 'product_pic/ycxnczb100.webp', null, '30', null, null, null, null, '10', null, '4544', null, '1000');
+INSERT INTO `product_table` VALUES ('2', '加厚加大可机洗牛津布野餐垫防潮垫送妈咪包', '118', null, 'product_pic/jhjdkjxnjbycd.webp', null, '130', null, null, null, null, '10', null, '1550', null, '400');
+INSERT INTO `product_table` VALUES ('3', '2019春夏新款中长款防紫外线防晒衣女', '179', null, 'product_pic/cxxkzckfzwxfsy.webp', null, '220', null, null, null, null, '8', null, '406', null, '840');
+INSERT INTO `product_table` VALUES ('4', '大号紫砂茶叶罐普洱茶缸私藏密封茶缸茶叶桶', '218', null, 'product_pic/dhzscygpecgscmfcg.webp', null, '320', null, null, null, null, '153', null, '724', null, '1520');
+INSERT INTO `product_table` VALUES ('5', '牛皮纸敞口盒船盒鸡米花盒薯条盒炸鸡烤翅盒', '110', null, 'product_pic/npzckcchjmhhsth.webp', null, '125', null, null, null, null, '28', null, '302', null, '280');
+INSERT INTO `product_table` VALUES ('6', '酿酒机设备小型家用白酒纯露全自动烧酒家庭', '688', null, 'product_pic/njjsbxxjybjclqzdz.webp', null, '1200', null, null, null, null, '10', null, '19542', null, '468');
+INSERT INTO `product_table` VALUES ('7', '手工擦色夏季男士正装黄棕色皮鞋男 真牛皮商务方头', '25.9', '[\"product_pic/190313u440x587.v1cAC.40.webp\",\"product_pic/190313u440x587.v1cAC.40.webp\",\"product_pic/190313u440x587.v1cAC.40.webp\"]', 'product_pic/190313u440x587.v1cAC.40.webp', null, '528', null, null, null, null, '201', null, '1024', null, '2024');
+INSERT INTO `product_table` VALUES ('8', '亮片不规则网纱裙半身裙女星空A字裙', '42', null, 'product_pic/TB23W5GbP7n.webp', null, '120', null, null, null, null, '7', null, '520', null, '375');
+INSERT INTO `product_table` VALUES ('9', '2019新款短袖V领收腰系带A字裙格子连衣裙女', '116', null, 'product_pic/O1CN01ZaAXPs1zLjL.webp', null, '528', null, null, null, null, '0', null, '16', null, '1');
+INSERT INTO `product_table` VALUES ('10', '春装女装半身裙黑色高腰中长网纱打底蓬蓬裙', '69.9', null, 'product_pic/O1CN01XFTVHx1OM3rZNlRzK.webp', null, '150', null, null, null, null, '2', null, '40', null, '20');
+INSERT INTO `product_table` VALUES ('11', '丝光棉圆领纯棉半袖T恤修身上衣春夏季韩版打底', '69', null, 'product_pic/TB15CHfhWmWBuNjy1XaY.webp', null, '210', null, null, null, null, '20', null, '1230', null, '123');
+INSERT INTO `product_table` VALUES ('12', '春夏2019韩版新款修身显瘦弹力高腰九分裤纯色', '35.8', null, 'product_pic/TB2rDWxXGSWBuNjSsrbXXa0mVX.webp', null, '120', null, null, null, null, '5', null, '50', null, '2');
 
 -- ----------------------------
 -- Table structure for serve_table
@@ -210,9 +215,10 @@ CREATE TABLE `user_table` (
   `occupation` varchar(255) DEFAULT NULL COMMENT '职业',
   `certification_id` int(11) NOT NULL DEFAULT '-1' COMMENT '实名认证',
   PRIMARY KEY (`id`,`certification_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_table
 -- ----------------------------
-INSERT INTO `user_table` VALUES ('1', 'sgg', '123', '1', '2019-03-30', '13435500345', '1', '2', 'jiji6143@163.com', 'student', '-1');
+INSERT INTO `user_table` VALUES ('1', 'sgg', '123', '1', '2019-03-30', '13435500345', '1', '2', 'jiji6143@163.com', '学生', '-1');
+INSERT INTO `user_table` VALUES ('2', 'cl', '123', null, '2017-11-01', '18344209482', null, '1', '1072705889@qq.com', '学生', '-1');
