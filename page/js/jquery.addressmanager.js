@@ -13,7 +13,7 @@ $(function () {
         // $("#addressManagerFrom").slideDown(1000) ;      // 滑动效果
         $("#addressManagerFrom").slideToggle(1000) ;      // 滑动效果
         // $('#addressManager_Form')[0].reset() ;
-        $('from')[0].reset();
+        $('form')[0].reset();
         // $("#addressManagerFrom").show() ;
 
     }) ;
@@ -30,7 +30,7 @@ $(function () {
         var consignee = $("#address_username").val();
         var receive_phone = $("#address_phone").val();
         // $("input[type='checkbox']").is(':checked');选中为true,未选中为false；
-var num ="" ;
+        var num ="" ;
         // var addressid=$(this).attr("addressid") ;
         var addressid="" ;
         var address_default =$("#address_default").is(":checked") ;
@@ -38,14 +38,12 @@ var num ="" ;
             if ($(this).attr("addressid").length != 0) {
                 num =2 ;
                 addressid =$(this).attr("addressid") ;
-                console.log("3"+addressid)
             }
         }catch (e) {        //  addressid 不存在
-            console.log("1")
             num =1 ;
         }
 
-
+        console.log("here--------------------") ;
 
         // if (userRegion.length !=null &&postalCode !=null &&stressId !=null &&consignee !=null &&receive_phone !=null){
         if (userRegion.length !=0 &&postalCode.length !=0 &&stressId.length !=0 &&consignee.length !=0 ){
@@ -56,7 +54,7 @@ var num ="" ;
                 "&stressId="+stressId+"&consignee="+consignee+
                 "&receive_phone="+receive_phone+"&address_default="+defaultStatu+"&userid="+userid+"&addressid="+addressid;
 
-            // forServiceData(num ,myData) ;
+            forServiceData(num ,myData) ;
         } else {
             showTip(7)
         }
@@ -152,11 +150,17 @@ function jsonMsg(jsonData) {
             })
         }) ;
         $("#address_edit"+i).click(function () {      //  修改
-            $("#address_name").val($("#address_realaddress"+i).val());
-            $("#postal_code").val($("#address_postalCode"+i).val());
-            $("#address_streetid").val($("#"+i).val());
-            $("#address_username").val($("#address_realname"+i).val());
-            $("#address_phone").val($("#address_realphone"+i).val());
+            var realAddress =$("#address_realaddress"+i).text();
+            var postCode =$("#address_postalCode"+i).text();
+            var realName =$("#address_realname"+i).text();
+            var realPhone =$("#address_realphone"+i).text();
+            $("#address_name").val(realAddress);
+            $("#postal_code").val(postCode);
+            $("#address_streetid").val(realAddress);
+            $("#address_username").val(realName);
+            $("#address_phone").val(realPhone);
+
+            console.log(realAddress,postCode,realName ,realPhone) ;
             // $("input[type='checkbox']").is(':checked');选中为true,未选中为false；
             defaultCode =$("#address_realisdefault"+i).attr("addressdefault-code") ;
             if (defaultCode ==1) {
@@ -166,6 +170,7 @@ function jsonMsg(jsonData) {
             // var address_default =.is(":checked") ;
             $("#addressManagerFrom").show() ;
         }) ;
+
         $("#address_realisdefault"+i).click(function () {      //  设置默认
             console.log($(this).attr("addressdefault-code")) ;
             if ($(this).attr("addressdefault-code")==0) {

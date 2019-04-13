@@ -203,7 +203,7 @@ class SqlUtils{
          * code 0 插入成功
          * code 1 插入失败
          * */
-        $address_detail =$userRegion+$stressId ;
+        $address_detail =$userRegion.$stressId ;
         if ($address_default==1){
             $defsql ="UPDATE  address_manager_table SET address_default='0' where user_id='{$userid}'" ;
             $this->sqlLink()->query($defsql) ;
@@ -280,7 +280,7 @@ class SqlUtils{
          * code 0 修改成功
          * code 1 修改失败
          * */
-        $address_detail =$userRegion+$stressId ;
+        $address_detail =$userRegion.$stressId ;
         if ($address_default==1){
             $defsql ="UPDATE  address_manager_table SET address_default='0' where user_id='{$userid}'" ;
             $this->sqlLink()->query($defsql) ;
