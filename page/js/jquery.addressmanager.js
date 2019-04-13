@@ -78,6 +78,8 @@ function forServiceData(num ,myData){
     var requestUrl="" ;
     if (num ==1){       // 添加
         requestUrl="addressManagerAdd"
+    }else if (num ==2){       // 修改
+        requestUrl="addressUpdate"
     }else if (num ==4){       // 查询
         requestUrl="addressManagerQuery"
     }else if (num ==3){       // 删除
@@ -106,6 +108,8 @@ function forServiceData(num ,myData){
                 }
                 // alert("查询成功");
             }else if (num ==3){
+                showTip(num)
+            }else if (num ==2){
                 showTip(num)
             }else if (num ==0){
                 showTip(num)

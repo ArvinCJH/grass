@@ -16,4 +16,4 @@ $userid =$_POST['userid'] ;
 $addressid =$_POST['$addressid'] ;
 
 $sqlTool =new SqlUtils() ;
-$sqlTool->userAddressAdd($userRegion ,$postalCode ,$stressId ,$consignee ,$receive_phone ,$address_default ,$userid ,$addressid) ;
+$sqlTool->userAddressUpdate($userRegion ,$postalCode ,$stressId ,$consignee ,$receive_phone ,$address_default ,$userid ,$addressid) ;
