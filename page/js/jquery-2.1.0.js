@@ -10462,7 +10462,7 @@ function showTip(tipmsg ,tipCode) {
     var tipStr ="" ;
     var hasReflash =true ;
     if (tipmsg =="0"){
-        tipStr ="提交成功" ;
+        tipStr ="成功" ;
     } else if (tipmsg =="1"){
         tipStr ="增加成功" ;
     } else if (tipmsg =="2"){
@@ -10477,9 +10477,11 @@ function showTip(tipmsg ,tipCode) {
     } else if (tipmsg =="6"){
         tipStr ="取消分享" ;
         hasReflash =false ;
-    }  else if (tipmsg =="8"){
+    } else if (tipmsg =="8"){
         tipStr ="登录成功" ;
         hasReflash =false ;
+    } else if (tipmsg =="-0"){
+        tipStr ="失败" ;
     } else if (tipmsg =="-1"){
         tipStr ="增加失败" ;
     } else if (tipmsg =="-2"){
@@ -10495,10 +10497,10 @@ function showTip(tipmsg ,tipCode) {
     } else if (tipmsg =="7"){
         tipStr ="请检查数据是否为空" ;
         hasReflash =false ;
-    }  else if (tipmsg =="-8"){
+    } else if (tipmsg =="-8"){
         tipStr ="用户名或密码错误" ;
         hasReflash =false ;
-    }   else if (tipmsg =="isNum"){
+    } else if (tipmsg =="isNum"){
         tipStr ="请检查 num 是否存在" ;
     } else {
         hasReflash =false ;

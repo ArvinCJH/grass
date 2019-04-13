@@ -1,4 +1,4 @@
-// var userid="1" ;
+var userid="" ;
 $(function () {
     userid = $.cookie('userid');
     if (userid ==null){
@@ -30,17 +30,33 @@ $(function () {
         var consignee = $("#address_username").val();
         var receive_phone = $("#address_phone").val();
         // $("input[type='checkbox']").is(':checked');选中为true,未选中为false；
+var num ="" ;
+        // var addressid=$(this).attr("addressid") ;
+        var addressid="" ;
         var address_default =$("#address_default").is(":checked") ;
+        try {
+            if ($(this).attr("addressid").length != 0) {
+                num =2 ;
+                addressid =$(this).attr("addressid") ;
+                console.log("3"+addressid)
+            }
+        }catch (e) {        //  addressid 不存在
+            console.log("1")
+            num =1 ;
+        }
+
+
+
         // if (userRegion.length !=null &&postalCode !=null &&stressId !=null &&consignee !=null &&receive_phone !=null){
-        if (userRegion.length !=0 &&postalCode.length !=0 &&stressId.length !=0 &&consignee.length !=0 &&receive_phone.length !=0){
-            var defaultStatu =2 ;
-            if (address_default) defaultStatu =1 ;
+        if (userRegion.length !=0 &&postalCode.length !=0 &&stressId.length !=0 &&consignee.length !=0 ){
+            var defaultStatu =1 ;
+            if (address_default) defaultStatu =0 ;
             // var url="../php/addressManagerAdd.php" ;
             var myData ="userRegion="+userRegion+"&postalCode="+postalCode+
                 "&stressId="+stressId+"&consignee="+consignee+
-                "&receive_phone="+receive_phone+"&address_default="+defaultStatu+"&userid="+userid;
-            var num =1 ;
-            forServiceData(num ,myData) ;
+                "&receive_phone="+receive_phone+"&address_default="+defaultStatu+"&userid="+userid+"&addressid="+addressid;
+
+            // forServiceData(num ,myData) ;
         } else {
             showTip(7)
         }
@@ -52,7 +68,6 @@ $(function () {
         forServiceData(num ,myData) ;
 
     }
-
 
 
 })
@@ -67,6 +82,8 @@ function forServiceData(num ,myData){
         requestUrl="addressManagerQuery"
     }else if (num ==3){       // 删除
         requestUrl="addressDel"
+    }else if (num ==0){       // 设置默认
+        requestUrl="addressSetDefault"
     }else {
         showTip("isNum") ;
     }
@@ -90,6 +107,8 @@ function forServiceData(num ,myData){
                 // alert("查询成功");
             }else if (num ==3){
                 showTip(num)
+            }else if (num ==0){
+                showTip(num)
             }
 
 
@@ -111,12 +130,11 @@ function jsonMsg(jsonData) {
             addressdefault ="默认地址" ;
         }
         // trs +="<tr><td id=\"address_realname\">"+value.consignee+"</td><td id=\"address_realaddress\">"+value.address_detail+"</td><td id=\"address_realphone\">"+value.receive_phone+"</td><td id=\"address_realisdefault\">"+addressdefault+"</td></tr>" ;
-        msgBody +="<div class='hasAddress_div'><ul><li class='hasAddress_lileft' id='address_realname"+n+"'>"+value.consignee+"</li><li class='hasAddress_limiddle' id='address_realaddress"+n+"'>"+value.address_detail+"</li><li class='hasAddress_lileft' id='address_postalCode"+n+"'>邮政编码</li><li class='hasAddress_lileft' id='address_realphone"+n+"'>"+value.receive_phone+"</li><li class='hasAddress_liright' id='address_optionlist"+n+"'><a addressdefault-code='"+value.address_default+"' id='address_realisdefault"+n+"'>"+addressdefault+"</a><a id='address_edit"+n+"'>编辑</a><a addressid='"+value.id+"' id='address_delete"+n+"'>删除</a></li></ul></div>" ;
+        msgBody +="<div class='hasAddress_div' ><ul><li class='hasAddress_lileft' id='address_realname"+n+"'>"+value.consignee+"</li><li class='hasAddress_limiddle' id='address_realaddress"+n+"'>"+value.address_detail+"</li><li class='hasAddress_lileft' id='address_postalCode"+n+"'>"+value.postal_code+"</li><li class='hasAddress_lileft' id='address_realphone"+n+"'>"+value.receive_phone+"</li><li class='hasAddress_liright' id='address_optionlist"+n+"'><a addressdefault-code='"+value.address_default+"' id='address_realisdefault"+n+"' class='pointer'>"+addressdefault+"</a><a class='pointer' id='address_edit"+n+"'>编辑</a><a class='pointer' addressid='"+value.id+"' id='address_delete"+n+"'>删除</a></li></ul></div>" ;
     }) ;
     $("#hasAddress").prepend(msgBody) ;
 
     $(".hasAddress_div").each(function (i ,n) {
-        console.log(n) ;
         $("#address_delete"+i).click(function () {          // 删除
             showCheckDialog({
                 title:'是否确认删除本地址',
@@ -140,14 +158,24 @@ function jsonMsg(jsonData) {
             if (defaultCode ==1) {
                 $("#address_default").attr("checked", true)
             }
+            $("#address_new").attr("addressid" ,$("#address_delete"+i).attr("addressid")) ;
             // var address_default =.is(":checked") ;
             $("#addressManagerFrom").show() ;
         }) ;
         $("#address_realisdefault"+i).click(function () {      //  设置默认
-            var idList="";
-            var myData="userid="+userid+"&addressid="+$("#address_delete"+i).attr("addressid")+"&$otherId="+0 ;
+            console.log($(this).attr("addressdefault-code")) ;
+            if ($(this).attr("addressdefault-code")==0) {
+                var num ="0" ;
+                var myData="userid="+userid+"&addressid="+$("#address_delete"+i).attr("addressid");
+                forServiceData(num ,myData)
+            }else {
+                console.log("is default")
+            }
 
 
         }) ;
     })
+
+
+
 }

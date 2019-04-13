@@ -204,6 +204,10 @@ class SqlUtils{
          * code 1 插入失败
          * */
         $address_detail =$userRegion+$stressId ;
+        if ($address_default==1){
+            $defsql ="UPDATE  address_manager_table SET address_default='0' where user_id='{$userid}'" ;
+            $this->sqlLink()->query($defsql) ;
+        }
 //        $sql = "UPDATE `user_table` SET `user_year` = "+$infoname+", `user_sex` = "+$infosex+", `mobile` = "+$infomobile+", `birthday` = "+$infobirth+", `occupation` = "+$infooccr+" WHERE `user_table`.`userid` = "+$userid;
         $sql = "INSERT INTO address_manager_table(region, postal_code, address_stress ,consignee ,receive_phone ,address_default ,address_detail ,user_id)
             VALUES ('$userRegion' ,'$postalCode' ,'$stressId' ,'$consignee' ,'$receive_phone' ,'$address_default' ,'$address_detail' ,'$userid')";     //  插入语句
@@ -252,7 +256,7 @@ class SqlUtils{
 
     }
 
-    function userAddressDel($userid ,$addressid){        //  用户地址查询
+    function userAddressDel($userid ,$addressid){        //  用户地址删除
         /* userAddressDel
          * code 0 success
          * code 1 fail
@@ -270,17 +274,45 @@ class SqlUtils{
         $this->closeDB() ;
     }
 
-    function userAddressSetDefault($userid ,$addressid,$otherId){        //  用户地址查询
-        /* userAddressDel
+    function userAddressUpdate($userRegion ,$postalCode ,$stressId ,$consignee ,
+                            $receive_phone ,$address_default ,$userid ,$addressid){     //  用户地址修改
+        /*
+         * code 0 修改成功
+         * code 1 修改失败
+         * */
+        $address_detail =$userRegion+$stressId ;
+        if ($address_default==1){
+            $defsql ="UPDATE  address_manager_table SET address_default='0' where user_id='{$userid}'" ;
+            $this->sqlLink()->query($defsql) ;
+        }
+//        $sql = "UPDATE `user_table` SET `user_year` = "+$infoname+", `user_sex` = "+$infosex+", `mobile` = "+$infomobile+", `birthday` = "+$infobirth+", `occupation` = "+$infooccr+" WHERE `user_table`.`userid` = "+$userid;
+//        $sql = "INSERT INTO address_manager_table(region, postal_code, address_stress ,consignee ,receive_phone ,address_default ,address_detail ,user_id)
+//            VALUES ('$userRegion' ,'$postalCode' ,'$stressId' ,'$consignee' ,'$receive_phone' ,'$address_default' ,'$address_detail' ,'$userid')";     //  插入语句
+
+        $sql = "UPDATE address_manager_table SET region='{$userRegion}' ,postal_code='{$postalCode}' ,address_stress='{$stressId}' ,consignee='{$consignee}' ,receive_phone='{$receive_phone}' ,address_default='{$address_default}' ,address_detail='{$address_detail}' WHERE user_id='{$userid}' and id='{$addressid}'" ;
+        $arr =null ;
+        if ($this->sqlLink()->query($sql) ===TRUE){
+            $code =0 ;
+//            echo "succ" ;
+        }else{
+            $code =1 ;
+//            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
+        }
+
+        $this->utilTool()->combinationOfData("userAddressUpdate" ,$code ,$arr) ;
+        $this->closeDB() ;
+    }
+
+    function userAddressSetDefault($userid ,$addressid){        //  用户地址设为默认
+        /* userAddressSetDefault
          * code 0 success
          * code 1 fail
          * */
 //        $sql = "UPDATE user_table SET user_sex='{$infosex}',mobile='{$infomobile}' ,birthday='{$infobirth}' ,occupation='{$infooccr}'
 //            WHERE id='{$userid}'";
-        foreach ($otherId as $other){
-            $sql ="UPDATE  address_manager_table SET address_default='0' where user_id='{$userid}' and id='{$other}'" ;
-            $this->sqlLink()->query($sql) ;
-        }
+
+        $defsql ="UPDATE  address_manager_table SET address_default='0' where user_id='{$userid}'" ;
+        $this->sqlLink()->query($defsql) ;
         $sql ="UPDATE  address_manager_table SET address_default='1' where user_id='{$userid}' and id='{$addressid}'" ;
         $result = null;
         if ($res =$this->sqlLink()->query($sql)){
@@ -353,7 +385,7 @@ class SqlUtils{
 //        评价数 、商品名称 、商品图片 、收藏数 、月销量 、价格
 //        evaluate_num ,name ,pic_url  ,collection_num ,monthly_sale ,price
 //        $sql="select id ,name ,price ,pic_url ,evaluate_num ,collection_num ,monthly_sale from product_table order by id limit 10;" ;       // 前十条
-        $sql="select id ,name ,price ,pic_url ,evaluate_num ,collection_num ,monthly_sale from product_table limit 10;" ;       // 随机显示前十条
+        $sql="select id ,name ,merchants_sales ,price ,pic_url ,evaluate_num ,collection_num ,monthly_sale from product_table limit 10" ;       // 随机显示前十条
         $result["data"] = array();
         if ($res =$this->sqlLink()->query($sql)){
             $code =0 ;
