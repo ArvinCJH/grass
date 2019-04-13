@@ -227,3 +227,6 @@ a:active,a:focus {
     height: 500px;
     color: #1c2738;
 }
+.clear_float{
+    clear: both;
+}
