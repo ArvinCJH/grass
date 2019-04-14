@@ -6,7 +6,6 @@
  * Time: 下午2:22
  */
 require 'util/SqlUtils.php' ;
-//$keyWord = "春";
 $keyWord = $_POST["fuzzyKeyWord"];
 $sqliteUtil =new SqlUtils() ;
 $sqliteUtil->commodityInformationQuery($keyWord) ;

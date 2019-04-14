@@ -86,7 +86,7 @@ class Utils
             if (empty($arr)) $myarr =$arr2 ;
             else $myarr =array_merge($arr2 ,$arr);
         }else $myarr =$arr2 ;
-        echo json_encode($myarr) ;
+        echo json_encode($myarr) ;      // array -> json
     }
 
     // 毫秒级时间戳

@@ -23,7 +23,7 @@ function forServiceData(num ,myData){
 
 
     getMyResponData(reqUrl ,myData ,function (data) {
-        console.log(data) ;
+        // console.log(data) ;
         setCommInfo(data.data)
     })
 }
@@ -36,6 +36,13 @@ function setCommInfo(data) {
         $("#item-evaluate_num").text(value.evaluate_num) ;
         $("#itemFix-evaluate_num").text(value.evaluate_num) ;
         $("#item-h1-name").html(value.name) ;
+        // goodsDetails
+
+        // var picList="" ;
+        // for (picU in value.pic_urls) {
+        //     picList+="<li><img src='"+picU+"'></li>" ;
+        // }
+        // $("#goodsDetails").html(picList) ;
         // console.log(value.name)
         // value.pic_url ;
 

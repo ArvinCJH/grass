@@ -226,13 +226,13 @@ a:active,a:focus {
     width: 400px;
     /*height: 500px;*/
     color: #1c2738;
-    border:1px solid red;
+    /*border:1px solid red;*/
 }
 .item-partright{
     float: left;
     width: 650px;
     /*height: 500px;*/
-    border:1px solid red;
+    /*border:1px solid red;*/
 }
 
 .clear_float{
@@ -267,8 +267,8 @@ a:active,a:focus {
     display: block;
     list-style-type: decimal;
     border: 1px solid #9b9b9b;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     float: left;
     margin: 2px 5px;
 }
@@ -290,13 +290,17 @@ body, dd, dl, form, ol, p, ul {
     float: right;
 }
 .item-num{
-    float: left;
-    border: 1px solid red;
+    /*float: left;*/
+    width: 90px;
+    /*border: 1px solid red;*/
 }
 .item-number{
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     width: 300px;
 }
+.item-ols li{
+    width: 50px;
 
+}
 
 
