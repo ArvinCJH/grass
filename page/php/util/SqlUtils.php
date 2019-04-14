@@ -376,7 +376,24 @@ class SqlUtils{
         $this->utilTool()->combinationOfData("commodityInformationIdQuery" ,$code ,$result) ;
         $this->closeDB() ;
     }
-    function commodityInformationQuery(){           //  商品信息查询,搜索框，根据名称搜索, 根据ID查询
+    function commodityInformationQuery($keyWord){           //  商品信息查询,搜索框，模糊查询
+        $sql ="select id ,name from product_table where name LIKE '%$keyWord%'" ;
+        $result["data"] = array();
+        if ($res =$this->sqlLink()->query($sql)){
+            $code =0 ;
+            while ($row =mysqli_fetch_assoc($res)){
+//            while ($row =mysqli_fetch_array($res ,MYSQLI_ASSOC)){
+//                $result[] =$row ;
+                array_push($result["data"] ,$row) ;
+
+            }
+            mysqli_free_result($res) ;
+        }else{
+            $code =1 ;
+//            echo "Error:".$sql ."<br>".$this->sqlLink() ->error ;
+        }
+        $this->utilTool()->combinationOfData("commodityInformationQuery" ,$code ,$result) ;
+        $this->closeDB() ;
 
     }
 

@@ -18,8 +18,21 @@
 
 		</style>
 		<script type="text/javascript">
-            $(function () {
-            });
+			// $(function () {
+            //     $("#search").change(function () {		// 改变时判断
+            //         var num ="4" ;
+            //         var myData="fuzzyKeyWord="+$(this).val() ;
+            //         console.log(myData) ;
+            //         // getData(num ,myData)
+            //     });
+            // })
+			$(function () {
+                $("#search").bind("input propertychange",function () {		// 改变时判断
+                    var myData="fuzzyKeyWord="+$(this).val() ;
+                    console.log(myData) ;
+                    // getData(num ,myData)
+                });
+            })
 		</script>
 	</head>
 	
@@ -37,7 +50,12 @@
 				<div class="top_input search_bar">
 					<input class="top_input_search" type="text" name="search" id="search" placeholder="请输入搜索关键字" />
 					<!--<input type="button" value="搜索" class="top_button">-->
-					<button type="submit"></button>
+					<button id="indexsearch-btn" type="button" onclick="indexsearch()"></button>
+
+					<div id="showResultHide">
+						<ul id="showResultHide-ul">
+						</ul>
+					</div>
 				</div>
 				<div class="top_message">
 					<a href="javascript:void(0)" id="index_msg"> <img src="page/img/message.jpg" alt="消息"/></a>

@@ -437,4 +437,26 @@ form {
     position: absolute ;
 }
 
+/* 模糊查询，弹出的选项框 */
+#showResultHide ul{
 
+    padding-top: 10px;
+}
+
+#showResultHide li{
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+#showResultHide li a{
+    color: white ;
+}
+
+#showResultHide{
+    margin-left: 135px;
+    margin-top: 70px;
+    background: rgba(212, 35, 122, 0.5);
+    width: 380px ;
+    display: none ;
+    /*display: block ;*/
+    position: absolute ;
+}

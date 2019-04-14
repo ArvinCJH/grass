@@ -34,6 +34,16 @@ $(function () {
 
     });
 
+    $("#search").bind("input propertychange",function () {		// 改变时判断
+        var num ="4" ;
+        var myData="fuzzyKeyWord="+$("#search").val() ;
+        getData(num ,myData);
+    }).blur(function () {
+        $("#showResultHide").slideUp(500) ;
+    }).focus(function () {
+        $("#showResultHide").slideDown(500) ;
+    });
+
     $("#index_login").click(function () {
         if (islogin){
             $("#showLoginHide").show() ;
@@ -118,12 +128,13 @@ $(function () {
     //         window.location.href = "http://localhost/page/login.html";
     //     }
     // });
+
 });
 
 function getHotMsg() {      //  获取热卖列表
     var data ="" ;
-    var request ="selling" ;
-    getData(request ,data) ;
+    var num =0 ;
+    getData(num ,data) ;
 }
 
 
@@ -144,11 +155,27 @@ function setHostMsg(data) {
     }) ;
 }
 
-function getData(request ,myData) {
+function getData(num ,myData) {
+    var request ="" ;
+    if (num ==0){
+        request ="selling" ;
+    } else if (num==4){
+        request ="indexFuzzyQuery" ;
+    } else {
+        showTip("isNum")
+    }
+
+
     getMyResponData(request ,myData ,function (data) {
-        console.log(data) ;
+
         if (data.code ==0){
-            setHostMsg(data.data)  // v -》method( callback) -> new value
+            if (num ==0){
+                setHostMsg(data.data)  // v -》method( callback) -> new value
+            } else if (num ==4){
+                console.log(data) ;
+                showFuzzyResult(data.data) ;
+            }
+
         }else if (data.code ==1){
             alert("插入失败") ;
         }else if (data.code ==2){
@@ -174,3 +201,30 @@ function msgFormUpPage() {
     $("#name").text("msg") ;
 }
 
+
+function indexsearch() {
+        var num ="4" ;
+        var myData="fuzzyKeyWord="+$("#search").val() ;
+        console.log(myData) ;
+        getData(num ,myData);
+}
+
+function showFuzzyResult(data) {
+    var body="" ;
+
+    $.each(data ,function (n ,value) {
+        body +="<li class='fuzzy-searchresult' fuzzyId='"+value.id+"'><a href='javascript:void(0)' id='searchresult"+n+"'>"+value.name+"</a></li>"
+
+    }) ;
+
+    $("#showResultHide-ul").html(body) ;
+    $("#showResultHide").slideDown(500) ;
+
+    $(".fuzzy-searchresult").each(function (i ,n) {
+        $(n).on("click" ,function () {
+            var fuzzyId =$(this).attr("fuzzyId");
+            window.location.href="/page/commodity/item.html?itemId="+fuzzyId ;
+        })
+    }) ;
+
+}
