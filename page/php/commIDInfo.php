@@ -7,6 +7,7 @@
  */
 
 require 'util/SqlUtils.php' ;
+$productId =$_POST["productid"] ;
 
 $db =new SqlUtils() ;
-$db->commodityInformationIdQuery(1);
+$db->commodityInformationIdQuery($productId);

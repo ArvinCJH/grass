@@ -356,8 +356,10 @@ class SqlUtils{
     }
 
     function commodityInformationIdQuery($productId){           //  根据ID查询
-        $sql ="select name ,price ,pic_urls ,merchants_address ,merchants_serve ,merchants_sales ,product_classify_ids ,
-                quantity_available ,quantity_purchased ,evaluate_num ,collection_num ,monthly_sale from product_table 
+//        $sql ="select name ,price ,pic_urls ,merchants_address ,merchants_serve ,merchants_sales ,product_classify_ids ,
+//                quantity_available ,quantity_purchased ,evaluate_num ,collection_num ,monthly_sale from product_table
+//                  where id='{$productId}'" ;
+        $sql ="select * from product_table 
                   where id='{$productId}'" ;
         $result["data"] = array();
         if ($res =$this->sqlLink()->query($sql)){
@@ -376,6 +378,7 @@ class SqlUtils{
         $this->utilTool()->combinationOfData("commodityInformationIdQuery" ,$code ,$result) ;
         $this->closeDB() ;
     }
+
     function commodityInformationQuery($keyWord){           //  商品信息查询,搜索框，模糊查询
         $sql ="select id ,name from product_table where name LIKE '%$keyWord%'" ;
         $result["data"] = array();

@@ -1,8 +1,5 @@
-/*!
- * strength.js
- * Original author: @aaronlumsden
- * Further changes, comments: @aaronlumsden
- * Licensed under the MIT license
+/**
+ * 滑动栏
  */
 ;(function ( $, window, document, undefined ) {
 
@@ -100,5 +97,4 @@
     };
 
 })( jQuery, window, document );
-
 

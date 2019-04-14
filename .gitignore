@@ -4,3 +4,4 @@
 out
 gen
 .gitignore
+/page/js/tabLable.js

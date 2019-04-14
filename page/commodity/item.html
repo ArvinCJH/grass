@@ -13,10 +13,50 @@
         var itemId ="" ;
         $(function () {
             itemId =UrlParam.paramValues("itemId") ;
+            getCommInfo() ;
             $(document).ready(function ($) {
                 $('#itemTab').tabulous({effect:'scale'})
             })
+
+
         })
+
+        function getCommInfo() {
+            var num =4 ;
+            var myData ="productid="+itemId ;
+            forServiceData(num ,myData) ;
+        }
+
+        function forServiceData(num ,myData){
+            var reqUrl ="" ;
+            if (num==4){
+                reqUrl ="commIDInfo" ;
+            }
+
+
+            getMyResponData(reqUrl ,myData ,function (data) {
+                console.log(data) ;
+                setCommInfo(data.data)
+            })
+        }
+
+        function setCommInfo(data) {
+            $.each(data ,function (n ,value) {
+                $("#item-merchants_sales").text(value.merchants_sales) ;
+                $("#item-price").text(value.price) ;
+                $("#item-collection_num").text(value.collection_num) ;
+                $("#item-evaluate_num").text(value.evaluate_num) ;
+                $("#itemFix-evaluate_num").text(value.evaluate_num) ;
+                $("#item-h1-name").html(value.name) ;
+                // console.log(value.name)
+                // value.pic_url ;
+
+                $("#itemPic-img-picUrl").attr("src" ,value.pic_url) ;
+                $("#item-quantity_available").text(value.quantity_available) ;
+
+            }) ;
+
+        }
 
     </script>
 </head>
@@ -30,7 +70,7 @@
 
         <div class="item-partleft-goodspic">
             <!--大图-->
-            <div class="item-img-one"><img src="/product_pic/tb_1.jpg"></div>
+            <div id="itemPic-picUrl" class="item-img-one"><img id="itemPic-img-picUrl" src="/product_pic/tb_1.jpg"></div>
             <!--小图-->
             <div></div>
 
@@ -40,19 +80,19 @@
     <!--right-->
     <div class="item-partright">
     <div class="item-partright-goods" >
-        <h1>shopName</h1>
+        <h1 id="item-h1-name"></h1>
             <div class="item-goods-main"></div>
             <div class="goods-mainbox-price">
                 <dl>
                     <dt>价格：</dt>
-                    <dd class="item-price">￥18.5</dd>
+                    <dd id="item-merchants_sales" class="item-price">￥18.5</dd>
                 </dl>
                 <dl>
                     <dt>促销价：</dt>
-                    <dd class="item-sales">￥8.5</dd>
+                    <dd id="item-price" class="item-sales">￥8.5</dd>
                     <dd>
-                        <span>评价：<span>5</span></span>
-                        <span>收藏：<span>15</span></span>
+                        <span>评价：<span id="item-evaluate_num">5</span></span>
+                        <span>收藏：<span id="item-collection_num">15</span></span>
                     </dd>
                 </dl>
             </div>
@@ -92,9 +132,9 @@
                         <dd>
                             <div><span>数量：</span><input autocomplete="off" value="1" type="number"></div>
                         <!--库存总数-->
-                            <div>库存1234件</div>
+                            <div>库存<span id="item-quantity_available"></span>件</div>
                         <!--库存提醒-->
-                            <div>您所填写的商品数量超过库存！</div>
+                            <div style="display: none">您所填写的商品数量超过库存！</div>
                         </dd>
                     </dl>
                 </div>
@@ -153,7 +193,7 @@
         <div id="itemTab">
             <ul>
                 <li><a href="#goodsDetails">商品详情</a></li>
-                <li><a href="#cumulativeAssessment">累计评价<em>1</em></a></li>
+                <li><a href="#cumulativeAssessment">累计评价<em id="itemFix-evaluate_num"></em></a></li>
                 <li><a href="#recommendation">本店同类商品</a></li>
             </ul>
 
@@ -178,11 +218,11 @@
     <div class="ext-module" style="background-color: #5577ba ;width: 30% ;float: right">
         <ul>
             <li><a>商品详情</a></li>
-            <li><a>累计评价<em>1</em></a></li>
+            <li><a>累计评价<em id="ext-evaluate_num"></em></a></li>
         </ul>
     </div>
 </div>
-
+    <div class="clear_float"></div>
 <div style="height: 400px">
     <h1>footer</h1>
 </div>
