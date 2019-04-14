@@ -9,61 +9,15 @@
     <script src="../js/jquery-2.1.0.js" ></script>
     <script src="../js/jquery.cookie.js" ></script>
     <script src="../js/tabLable.js" ></script>
+    <script src="../js/jquery.item.js" ></script>
     <script type="text/javascript">
-        var itemId ="" ;
-        $(function () {
-            itemId =UrlParam.paramValues("itemId") ;
-            getCommInfo() ;
-            $(document).ready(function ($) {
-                $('#itemTab').tabulous({effect:'scale'})
-            })
-
-
-        })
-
-        function getCommInfo() {
-            var num =4 ;
-            var myData ="productid="+itemId ;
-            forServiceData(num ,myData) ;
-        }
-
-        function forServiceData(num ,myData){
-            var reqUrl ="" ;
-            if (num==4){
-                reqUrl ="commIDInfo" ;
-            }
-
-
-            getMyResponData(reqUrl ,myData ,function (data) {
-                console.log(data) ;
-                setCommInfo(data.data)
-            })
-        }
-
-        function setCommInfo(data) {
-            $.each(data ,function (n ,value) {
-                $("#item-merchants_sales").text(value.merchants_sales) ;
-                $("#item-price").text(value.price) ;
-                $("#item-collection_num").text(value.collection_num) ;
-                $("#item-evaluate_num").text(value.evaluate_num) ;
-                $("#itemFix-evaluate_num").text(value.evaluate_num) ;
-                $("#item-h1-name").html(value.name) ;
-                // console.log(value.name)
-                // value.pic_url ;
-
-                $("#itemPic-img-picUrl").attr("src" ,value.pic_url) ;
-                $("#item-quantity_available").text(value.quantity_available) ;
-
-            }) ;
-
-        }
 
     </script>
 </head>
 <body>
 <!--上半部分-->
-<div class="item">
-<div>
+<div class="item"style="height: 1800px">
+<div >
     <!--left-->
     <div class="item-partleft">
         <!--图像-->
@@ -191,12 +145,24 @@
 <div class="clear_float"></div>
 <!--中间部分-->
 <div style="width: 90% ">
-    <div class="shop-module" style="background-color: #5577ba ;width: 20% ;float: left">
-    <h3>
-        <div class="shopname"><a>shopname</a><div>小图标</div></div>
-    </h3>
-    </div>
-    <div id="item_fixed_part" class="tabpanel-module" style="background-color: #CC0000 ;width: 50% ;float: left">
+
+    <!--<div class="shop-module" style="background-color: #5577ba ;width: 20% ;float: left">-->
+    <!--<h3>-->
+        <!--<div class="shopname"><a>shopname</a><div>小图标</div></div>-->
+    <!--</h3>-->
+    <!--</div>-->
+    <div id="item_fixed_part" class="tabpanel-module" style="width: 80% ;float: left ;background: white ">
+        <div class="shop-module" style="background-color: #5577ba ;width: 20% ;float: left">
+            <h3>
+                <div class="shopname"><a>shopname</a><div>小图标</div></div>
+            </h3>
+        </div>
+        <div class="ext-module" style="background-color: #5577ba ;width: 30% ;float: right">
+            <ul>
+                <li><a>商品详情</a></li>
+                <li><a>累计评价<em id="ext-evaluate_num"></em></a></li>
+            </ul>
+        </div>
         <div id="itemTab">
             <ul>
                 <li><a href="#goodsDetails">商品详情</a></li>
@@ -207,7 +173,10 @@
             <div id="tabs_container">
                 <!--商品详情-->
                 <div id="goodsDetails" >
-                    <p>goodsDetails</p>
+                    <li><img src="/product_pic/dhzscygpecgscmfcg.webp"></li>
+                    <li><img src="/product_pic/dhzscygpecgscmfcg.webp"></li>
+                    <li><img src="/product_pic/dhzscygpecgscmfcg.webp"></li>
+                    <li><img src="/product_pic/dhzscygpecgscmfcg.webp"></li>
                 </div>
                 <!--累计评价-->
                 <div id="cumulativeAssessment">
@@ -219,15 +188,15 @@
                 </div>
             </div>
         </div>
-
+        <!--<div class="ext-module" style="background-color: #5577ba ;width: 30% ;float: right">-->
+            <!--<ul>-->
+                <!--<li><a>商品详情</a></li>-->
+                <!--<li><a>累计评价<em id="ext-evaluate_num"></em></a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
     </div>
     <script src="../js/itemFloat.js" ></script>
-    <div class="ext-module" style="background-color: #5577ba ;width: 30% ;float: right">
-        <ul>
-            <li><a>商品详情</a></li>
-            <li><a>累计评价<em id="ext-evaluate_num"></em></a></li>
-        </ul>
-    </div>
+
 </div>
     <div class="clear_float"></div>
 <div style="height: 400px">

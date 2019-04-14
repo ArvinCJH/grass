@@ -215,7 +215,8 @@ a:active,a:focus {
 }
 
 .item{
-    width: 1180px;
+    width: 80%;
+    height: 1800px;
     margin:auto;
 }
 
