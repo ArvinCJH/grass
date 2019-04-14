@@ -222,14 +222,14 @@ a:active,a:focus {
 /*左边*/
 .item-partleft{
     float: left;
-    width: 500px;
+    width: 400px;
     /*height: 500px;*/
     color: #1c2738;
     border:1px solid red;
 }
 .item-partright{
     float: left;
-    width: 500px;
+    width: 650px;
     /*height: 500px;*/
     border:1px solid red;
 }
@@ -241,11 +241,16 @@ a:active,a:focus {
 .item-price{
     text-decoration:line-through;
     color: #999;
-    /*background-color: #9b9b9b;*/
+    padding-left: 60px;
+    padding-top: 7px;
+
 }
 .item-sales{
     color: red;
     font-size: 26px;
+    /*float: left;*/
+    padding-left: 60px;
+    padding-top: 5px;
 }
 .item-shop-one{
 
@@ -266,5 +271,31 @@ a:active,a:focus {
     float: left;
     margin: 2px 5px;
 }
+.item-dt-one{
+    border: 750px;
+    line-height: 32px;
+    position: absolute;
+
+}
+.item-dt-two{
+    border: 750px;
+    line-height: 40px;
+    position: absolute;
+}
+body, dd, dl, form, ol, p, ul {
+    margin: 0;
+}
+.item-dd{
+    float: right;
+}
+.item-num{
+    float: left;
+    border: 1px solid red;
+}
+.item-number{
+    border: 1px solid red;
+    width: 300px;
+}
+
 
 

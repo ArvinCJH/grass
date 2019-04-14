@@ -84,31 +84,31 @@
             <div class="item-goods-main"></div>
             <div class="goods-mainbox-price">
                 <dl>
-                    <dt>价格：</dt>
+                    <dt class="item-dt-one">价格：</dt>
                     <dd id="item-merchants_sales" class="item-price">￥18.5</dd>
                 </dl>
                 <dl>
-                    <dt>促销价：</dt>
+                    <dt class="item-dt-two">促销价：</dt>
                     <dd id="item-price" class="item-sales">￥8.5</dd>
-                    <dd>
+                    <dd class="item-dd">
                         <span>评价：<span id="item-evaluate_num">5</span></span>
                         <span>收藏：<span id="item-collection_num">15</span></span>
                     </dd>
                 </dl>
             </div>
 
-            <!--店铺优惠-->
-            <div>
-                <div>
-                    <div>店铺优惠</div>
-                    <div><div><span>满1元立减1元</span><span>领取</span></div></div>
-                </div>
-            </div>
-        </div>
-        <!--客服-->
-        <div>
-            <dl><dt>客服：</dt><dd>联系客服</dd></dl>
-        </div>
+            <!--&lt;!&ndash;店铺优惠&ndash;&gt;-->
+            <!--<div>-->
+                <!--<div>-->
+                    <!--<div>店铺优惠</div>-->
+                    <!--<div><div><span>满1元立减1元</span><span>领取</span></div></div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;客服&ndash;&gt;-->
+        <!--<div>-->
+            <!--<dl><dt>客服：</dt><dd>联系客服</dd></dl>-->
+        <!--</div>-->
         <!--购买-->
         <div>
             <!--商品信息-->
@@ -116,7 +116,14 @@
                 <div><span>选择商品信息</span></div>
                 <div>
                     <!--款式-->
-                    <dl><dt>颜色：</dt><dd><ol><li>黑色</li><li>白色</li></ol></dd></dl>
+                    <dl><dt>颜色：</dt>
+                        <dd>
+                            <ol>
+                                <li>黑色</li>
+                                <li>白色</li>
+                            </ol>
+                        </dd>
+                    </dl>
                     <!--尺寸-->
                     <dl><dt>尺码：</dt>
                         <dd>
@@ -130,9 +137,9 @@
                     <!--数量-->
                     <dl>
                         <dd>
-                            <div><span>数量：</span><input autocomplete="off" value="1" type="number"></div>
+                            <div class="item-number"><span>数量：</span><input autocomplete="off" value="1" type="number"></div>
                         <!--库存总数-->
-                            <div>库存<span id="item-quantity_available"></span>件</div>
+                            <div class="item-num">库存<span id="item-quantity_available"></span>件</div>
                         <!--库存提醒-->
                             <div style="display: none">您所填写的商品数量超过库存！</div>
                         </dd>
@@ -161,14 +168,14 @@
         <!--承诺服务、支付方式-->
         <div>
             <!--服务说明-->
-            <div>
-                <div>服务说明：</div>
-                <ul>
-                    <li><a><img src=""></a></li>
-                    <li><a><img src=""></a></li>
-                    <li><a><img src=""></a></li>
-                </ul>
-            </div>
+            <!--<div>-->
+                <!--<div>服务说明：</div>-->
+                <!--<ul>-->
+                    <!--<li><a><img src=""></a></li>-->
+                    <!--<li><a><img src=""></a></li>-->
+                    <!--<li><a><img src=""></a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
             <!--支付方式-->
             <div>
                 <div>支付方式：</div>
