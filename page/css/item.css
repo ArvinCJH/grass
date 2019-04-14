@@ -223,14 +223,14 @@ a:active,a:focus {
 .item-partleft{
     float: left;
     width: 500px;
-    height: 500px;
+    /*height: 500px;*/
     color: #1c2738;
     border:1px solid red;
 }
 .item-partright{
     float: left;
     width: 500px;
-    height: 500px;
+    /*height: 500px;*/
     border:1px solid red;
 }
 

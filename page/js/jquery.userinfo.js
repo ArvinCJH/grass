@@ -28,22 +28,23 @@ $(function () {
             success:function (data) {
                 console.log(data) ;
                 if (data.code ==0){
-                    // alert("成功") ;
-                    // radios.eq(0).attr("checked" ,true) ;
-                    // radios.eq(1).attr("checked" ,false) ;
-                    $("#userinfo_name").val(data.username) ;
-                    $("#userinfo_birth").val(data.birthday) ;
-                    $("#userinfo_mobile").val(data.mobile) ;
-                    $("#userinfo_occu").val(data.job) ;
-                    if (data.usersex ==1){
-                        radios.eq(0).attr("checked" ,true) ;
-                        radios.eq(1).attr("checked" ,false) ;
-                    }else {
-                        radios.eq(1).attr("checked" ,true) ;
-                        radios.eq(0).attr("checked" ,false) ;
-                    }
+
+                        // alert("成功") ;
+                        // radios.eq(0).attr("checked" ,true) ;
+                        // radios.eq(1).attr("checked" ,false) ;
+                        $("#userinfo_name").val(data.username) ;
+                        $("#userinfo_birth").val(data.birthday) ;
+                        $("#userinfo_mobile").val(data.mobile) ;
+                        $("#userinfo_occu").val(data.job) ;
+                        if (data.usersex ==1){
+                            radios.eq(0).attr("checked" ,true) ;
+                            radios.eq(1).attr("checked" ,false) ;
+                        }else {
+                            radios.eq(1).attr("checked" ,true) ;
+                            radios.eq(0).attr("checked" ,false) ;
+                        }
                 }else if (data.code ==1){
-                    alert("查询失败") ;
+                    showTip(-4)
                 } else if (data.code ==2){
                     alert("userId 为空") ;
                 }
