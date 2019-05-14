@@ -4,10 +4,11 @@ include 'Utils.php' ;
 class SqlUtils{
 
     function sqlLink(){
-        $mysqlHost ="localhost" ;
+//        $mysqlHost ="localhost" ;
+        $mysqlHost ="47.102.199.241" ;
         $mysqlName ="grass" ;
         $mysqlPass ="123456" ;
-        $mysqlDBName ="shop" ;
+        $mysqlDBName ="grasshop" ;
 
         //造连接对象
         $db= new mysqli($mysqlHost,$mysqlName,$mysqlPass,$mysqlDBName);
